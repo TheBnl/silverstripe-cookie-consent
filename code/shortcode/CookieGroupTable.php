@@ -19,10 +19,10 @@ class CookieGroupTable
         ShortcodeParser::get('default')->register('cookiegrouptable', function ($arguments, $address, $parser, $shortcode) {
             $group = (isset($arguments['group']) && $arguments['group']) ? $arguments['group'] : CookieGroup::REQUIRED_DEFAULT;
             if ($group = CookieGroup::get()->find('ConfigName', $group)) {
-                return $group->renderWith('CookieGroupTable');
+                return $group->renderWith('CookieGroupTable')->getValue();
             }
 
-            return null;
+            return '[cookiegrouptable]';
         });
     }
 }
