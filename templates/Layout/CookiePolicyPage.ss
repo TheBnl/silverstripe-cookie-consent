@@ -1,7 +1,7 @@
 <div class="row">
     <div class="column">
         <h2>$Title</h2>
-        $Content
         $CookieConsentForm
+        $Content
     </div>
 </div>
