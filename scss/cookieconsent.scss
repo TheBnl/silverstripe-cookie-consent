@@ -1,0 +1,62 @@
+@import "../node_modules/foundation-sites/scss/foundation";
+@import "settings";
+
+@include foundation-button;
+@include foundation-switch;
+@include foundation-reveal;
+
+.cookie-consent {
+    &__button {
+        margin-bottom: 0;
+    }
+    &__field {
+        &--checkbox {
+            &:disabled ~ .switch-paddle {
+                cursor: not-allowed;
+            }
+        }
+    }
+}
+
+.cookie-consent-field {
+    @include grid-row;
+    @include grid-row-nest;
+    &__field,
+    &__label {
+        box-sizing: border-box;
+        @include grid-col;
+        @include grid-col-size(6);
+        @include breakpoint(medium) {
+            @include grid-col-size(2);
+        }
+    }
+    &__field {
+        @include breakpoint(medium) {
+            @include grid-col-pos(8);
+        }
+        .switch {
+            float: right;
+        }
+    }
+    &__description {
+        box-sizing: border-box;
+        @include grid-col;
+        @include breakpoint(medium) {
+            @include grid-col-size(8);
+            @include grid-col-pos(-2);
+        }
+    }
+    &__message {
+        box-sizing: border-box;
+        @include grid-row;
+        @include grid-col;
+    }
+}
+
+.cookie-consent-form fieldset {
+    @include grid-row;
+}
+
+input[name='action_submitConsent'] {
+    @include button;
+}

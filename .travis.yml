@@ -1,0 +1,37 @@
+# See https://github.com/silverstripe-labs/silverstripe-travis-support for setup details
+language: php
+
+dist: precise
+
+sudo: false
+
+addons:
+  apt:
+    packages:
+      - tidy
+
+matrix:
+  include:
+    - php: 5.5
+      env: DB=SQLITE CORE_RELEASE=3.1
+    - php: 5.6
+      env: DB=MYSQL CORE_RELEASE=3.2
+    - php: 5.6
+      env: DB=MYSQL CORE_RELEASE=3.4
+    - php: 7.0
+      env: DB=MYSQL CORE_RELEASE=3.6
+    - php: 7.1
+      env: DB=MYSQL CORE_RELEASE=3.6
+
+before_script:
+  - if ! [ $(phpenv version-name) = "5.3" ]; then printf "\n" | pecl install imagick; fi
+  - if [ $(phpenv version-name) = "5.3" ]; then printf "\n" | pecl install imagick-3.3.0; fi
+  - phpenv rehash
+  - composer self-update
+  - git clone git://github.com/silverstripe-labs/silverstripe-travis-support.git ~/travis-support
+  - php ~/travis-support/travis_setup.php --source `pwd` --target ~/builds/ss
+  - cd ~/builds/ss
+  - composer install
+
+after_failure:
+  - php ~/travis-support/travis_upload_artifacts.php --if-env BEHAT_TEST,ARTIFACTS_KEY --target-path $TRAVIS_REPO_SLUG/$TRAVIS_BUILD_ID/$TRAVIS_JOB_ID --artifacts-base-url https://s3.amazonaws.com/$ARTIFACTS_BUCKET/

@@ -1,0 +1,17 @@
+en:
+  CookieConsent:
+    CookieConsentTitle: 'This website uses cookies'
+    CookieConsentContent: '<p>We use cookies to personalise content, to provide social media features and to analyse our traffic. We also share information about your use of our site with our social media and analytics partners who may combine it with other information that you’ve provided to them or that they’ve collected from your use of their services. You consent to our cookies if you continue to use our website.</p>'
+    CookiePolicyPageTitle: 'Cookie Policy'
+    CookiePolicyPageContent: '<p>Default cookie policy</p>'
+    PrivacyPolicyPageTitle: 'Privacy Policy'
+    PrivacyPolicyPageContent: '<p>Default privacy policy</p>'
+    TermsAndConditionsPageTitle: 'Terms and Conditions'
+    TermsAndConditionsPageContent: '<p>Default terms and conditions</p>'
+    Necessary: 'Necessary'
+    NecessaryContent: '<p>Necessary cookies make sure the site is able to run and includes your site preferences.</p>'
+    Statistics: 'Statistics'
+    StatisticsContent: '<p>With statistical cookies we’re able to track site usage that in return lets us improve the information on the website.</p>'
+    Marketing: 'Marketing'
+    MarketingContent: '<p>Marketing cookies are used to track the success of our advertising campaigns.</p>'
+    Save: 'Save'

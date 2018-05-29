@@ -1,0 +1,21 @@
+{
+  "name": "bramdeleeuw/cookieconsent",
+  "description": "GDPR compliant cookie bar and consent checker",
+  "type": "silverstripe-module",
+  "keywords": ["silverstripe", "GDPR", "Cookie", "Bar", "Consent"],
+  "license": "BSD-3-Clause",
+  "authors": [
+    {
+      "name": "Bram de Leeuw",
+      "email": "bram@broarm.nl"
+    }
+  ],
+  "require": {
+    "silverstripe/framework": ">=3.1",
+    "silverstripe/cms": ">=3.1",
+    "silverstripe-australia/gridfieldextensions": "*"
+  },
+  "extra": {
+    "installer-name": "cookieconsent"
+  }
+}

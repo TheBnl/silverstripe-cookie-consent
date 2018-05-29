@@ -1,0 +1,26 @@
+---
+Name: cookieconsent
+---
+Broarm\CookieConsent\CookieConsent:
+  include_javascript: true
+  include_css: true
+  create_default_pages: true
+  cookies:
+    Necessary:
+      - CookieConsent
+
+ContentController:
+  extensions:
+    - Broarm\CookieConsent\ContentControllerExtension
+
+SiteConfig:
+  extensions:
+    - Broarm\CookieConsent\SiteConfigExtension
+
+XD\CookieConsent\CookieGroup:
+  extensions:
+    - FluentExtension
+
+XD\CookieConsent\CookieDescription:
+  extensions:
+    - FluentExtension
