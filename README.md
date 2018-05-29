@@ -11,7 +11,8 @@ composer require bramdeleeuw/cookieconsent
 You can configure the cookies and cookie groups trough the yml config. 
 By configuring cookies trough yml you can check for consent in your code and make the necessary changes e.g. require the analytics or other cookies or skip placing them.
 The texts for the configured cookies are editable trough the Site Config, here other cookies can also be added by CMS users. 
-For example if a site user decides to embed a Youtube video he or she can specify the cookies that are placed by Youtube.   
+For example if a site user decides to embed a Youtube video he or she can specify the cookies that are placed by Youtube.
+I reccomend the following three groups to be created, these have default content, of course you are free to configure groups as you see fit.
 ```yaml
 XD\CookieConsent\CookieConsent:
   cookies:
@@ -20,14 +21,14 @@ XD\CookieConsent\CookieConsent:
       - ShowPopUp
     Marketing:
       - _track
-    Statistics:
+    Analytics:
       - _ga
       - _gid
 ```
 
 Then you can check for consent in your code by calling
 ```php
-if (CookieConsent::check('Statistics')) {
+if (CookieConsent::check('Analytics')) {
     // include google analytics
 }
 ```
