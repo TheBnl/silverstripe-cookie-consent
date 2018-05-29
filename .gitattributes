@@ -3,7 +3,6 @@
 .editorconfig export-ignore
 .scrutinizer.yml export-ignore
 .travis.yml export-ignore
-.babelrc export-ignore
 CHANGELOG.md export-ignore
 CONTRIBUTING.md export-ignore
 tests export-ignore
@@ -11,6 +10,5 @@ docs export-ignore
 webpack.common.js export-ignore
 webpack.config.js export-ignore
 webpack.prod.js export-ignore
-yarn.lock export-ignore
 package.json export-ignore
 gulpfile.js export-ignore
