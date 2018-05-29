@@ -73,5 +73,5 @@ If you want to prevent that behaviour you should disable the `create_default_pag
 The pages created are a CookiePolicyPage, PrivacyPolicyPage and TermsAndConditionsPage and are filled with bare bones content for each of the page types.
 _Of course it is your or your CMS users responsibility to alter these texts to make them fitting to your use case!_
 
-### Maintainers
+### Maintainers 
 [Bram de Leeuw](http://www.twitter.com/bramdeleeuw)
