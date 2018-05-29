@@ -16,11 +16,3 @@ ContentController:
 SiteConfig:
   extensions:
     - Broarm\CookieConsent\SiteConfigExtension
-
-XD\CookieConsent\CookieGroup:
-  extensions:
-    - FluentExtension
-
-XD\CookieConsent\CookieDescription:
-  extensions:
-    - FluentExtension

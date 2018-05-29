@@ -7,11 +7,13 @@ use DataObject;
 use DB;
 use Exception;
 use FieldList;
+use Fluent;
 use GridField;
 use GridFieldConfig_RecordEditor;
 use HasManyList;
 use HiddenField;
 use HtmlEditorField;
+use i18n;
 use Member;
 use Tab;
 use TabSet;
@@ -38,6 +40,10 @@ class CookieGroup extends DataObject
         'ConfigName' => 'Varchar(255)',
         'Title' => 'Varchar(255)',
         'Content' => 'HtmlText',
+    );
+
+    private static $indexes = array(
+        'ConfigName' => true
     );
 
     private static $has_many = array(
@@ -107,6 +113,7 @@ class CookieGroup extends DataObject
                         'Title' => _t("CookieConsent.$groupName", $groupName),
                         'Content' => _t("CookieConsent.{$groupName}Content")
                     ));
+
                     $group->write();
                     DB::alteration_message(sprintf('Cookie group "%s" created', $groupName), 'created');
                 }
@@ -119,9 +126,12 @@ class CookieGroup extends DataObject
                         ));
 
                         $group->Cookies()->add($cookie);
+                        $cookie->flushCache();
                         DB::alteration_message(sprintf('Cookie "%s" created and added to group "%s"', $cookieName, $groupName), 'created');
                     }
                 }
+
+                $group->flushCache();
             }
         }
     }

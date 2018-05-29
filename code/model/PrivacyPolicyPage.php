@@ -30,7 +30,6 @@ class PrivacyPolicyPage extends Page
         if (Config::inst()->get(CookieConsent::class, 'create_default_pages') && !self::get()->exists()) {
             $page = self::create();
             $page->write();
-            $page->publish('Stage', 'Live');
             $page->flushCache();
             DB::alteration_message('Privacy Policy page created', 'created');
         }

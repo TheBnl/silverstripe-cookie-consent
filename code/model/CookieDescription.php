@@ -31,8 +31,11 @@ class CookieDescription extends DataObject
         'Title' => 'Varchar(255)',
         'Provider' => 'Varchar(255)',
         'Purpose' => 'Varchar(255)',
-        'Expiry' => 'Varchar(255)',
-        'Type' => 'Varchar(255)',
+        'Expiry' => 'Varchar(255)'
+    );
+
+    private static $indexes = array(
+        'ConfigName' => true
     );
 
     private static $has_one = array(
@@ -40,19 +43,17 @@ class CookieDescription extends DataObject
     );
 
     private static $summary_fields = array(
-        'Title' => 'Title',
+        'Title',
         'Provider',
         'Purpose',
-        'Expiry',
-        'Type'
+        'Expiry'
     );
 
     private static $translate = array(
         'Title',
         'Provider',
         'Purpose',
-        'Expiry',
-        'Type'
+        'Expiry'
     );
 
     private static $singular_name = 'Cookie description';
@@ -66,8 +67,7 @@ class CookieDescription extends DataObject
             TextField::create('Title', $this->fieldLabel('Title')),
             TextField::create('Provider', $this->fieldLabel('Provider')),
             TextField::create('Purpose', $this->fieldLabel('Purpose')),
-            TextField::create('Expiry', $this->fieldLabel('Expiry')),
-            TextField::create('Type', $this->fieldLabel('Type'))
+            TextField::create('Expiry', $this->fieldLabel('Expiry'))
         ));
 
         $this->extend('updateCMSFields', $fields);
