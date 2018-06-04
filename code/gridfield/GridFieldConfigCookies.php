@@ -3,6 +3,7 @@ namespace Broarm\CookieConsent;
 
 use GridFieldAddNewInlineButton;
 use GridFieldConfig;
+use GridFieldDeleteAction;
 use GridFieldEditableColumns;
 use GridFieldFilterHeader;
 use GridFieldSortableHeader;
