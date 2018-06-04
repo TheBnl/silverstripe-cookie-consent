@@ -2,6 +2,7 @@
 
 namespace Broarm\CookieConsent;
 
+use Config;
 use DataObject;
 use FieldList;
 use HiddenField;
