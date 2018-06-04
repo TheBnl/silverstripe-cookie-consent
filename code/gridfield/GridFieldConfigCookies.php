@@ -22,6 +22,7 @@ class GridFieldConfigCookies extends GridFieldConfig
         $this->addComponent($sort = new GridFieldSortableHeader());
         $this->addComponent($filter = new GridFieldFilterHeader());
         $this->addComponent(new GridFieldEditableColumns());
+        $this->addComponent(new GridFieldDeleteAction());
         $this->addComponent(new GridFieldAddNewInlineButton('toolbar-header-right'));
 
         $sort->setThrowExceptionOnBadDataType(false);

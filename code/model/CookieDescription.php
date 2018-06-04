@@ -73,4 +73,22 @@ class CookieDescription extends DataObject
         $this->extend('updateCMSFields', $fields);
         return $fields;
     }
+
+    /**
+     * Cookies without a config definition can be deleted
+     *
+     * @param null $member
+     * @return bool
+     */
+    public function canDelete($member = null)
+    {
+        $cookieConfig = Config::inst()->get(CookieConsent::class, 'cookies');
+        $found = false;
+        foreach ($cookieConfig as $group => $cookies) {
+            if ($found) break;
+            $found = in_array($this->ConfigName, $cookies);
+        }
+
+        return !$found;
+    }
 }

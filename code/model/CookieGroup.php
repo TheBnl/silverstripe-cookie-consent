@@ -141,8 +141,15 @@ class CookieGroup extends DataObject
         return false;
     }
 
+    /**
+     * Make deletable if not defined in config
+     *
+     * @param null $member
+     * @return bool
+     */
     public function canDelete($member = null)
     {
-        return false;
+        $cookieConfig = Config::inst()->get(CookieConsent::class, 'cookies');
+        return !isset($cookieConfig[$this->ConfigName]);
     }
 }
