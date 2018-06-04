@@ -7,9 +7,10 @@
     "build": "webpack --config webpack.prod.js && gulp build"
   },
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.4",
-    "babel-preset-env": "^1.6.1",
+    "@babel/core": "^7.0.0-beta.49",
+    "@babel/preset-env": "^7.0.0-beta.49",
+    "@babel/preset-es2015": "^7.0.0-beta.49",
+    "babel-loader": "^8.0.0-beta",
     "clean-webpack-plugin": "^0.1.19",
     "concurrently": "^3.5.1",
     "css-loader": "^0.28.10",
@@ -19,12 +20,13 @@
     "node-sass": "^4.7.2",
     "postcss-loader": "^2.1.1",
     "pump": "^3.0.0",
-    "sass-loader": "^6.0.7",
-    "uglifyjs-webpack-plugin": "^1.2.2",
-    "webpack": "^4.1.1",
-    "webpack-cli": "^2.0.10",
+    "sass-loader": "^7.0.2",
+    "uglifyjs-webpack-plugin": "^1.2.5",
+    "webpack": "^4.10.2",
+    "webpack-cli": "^3.0.1",
     "webpack-merge": "^4.1.2"
   },
+  "test": {},
   "dependencies": {
     "foundation-sites": "^6.0.0",
     "jquery": ">=3.0.0"
