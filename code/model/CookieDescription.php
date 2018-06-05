@@ -5,7 +5,6 @@ namespace Broarm\CookieConsent;
 use Config;
 use DataObject;
 use FieldList;
-use HiddenField;
 use Tab;
 use TabSet;
 use TextField;

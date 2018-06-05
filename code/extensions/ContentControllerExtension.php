@@ -65,6 +65,6 @@ class ContentControllerExtension extends Extension
 
     public function getAcceptAllCookiesLink()
     {
-        return $this->owner->Link('acceptAllCookies');
+        return Controller::join_links('acceptAllCookies', 'acceptAllCookies');
     }
 }

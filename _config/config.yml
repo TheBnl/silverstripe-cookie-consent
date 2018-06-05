@@ -7,7 +7,12 @@ Broarm\CookieConsent\CookieConsent:
   create_default_pages: true
   cookies:
     Necessary:
+      - PHPSESSID
       - CookieConsent
+
+Director:
+  rules:
+    acceptAllCookies: Page_Controller
 
 ContentController:
   extensions:
