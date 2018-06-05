@@ -6,6 +6,7 @@ use CookiePolicyPage;
 use Extension;
 use Config;
 use Requirements;
+use Controller;
 
 /**
  * Class ContentControllerExtension
