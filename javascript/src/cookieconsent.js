@@ -14,7 +14,17 @@ export const CookieConsent = function () {
         this.consent = this.isSet()
             ? decodeURIComponent(this.cookieJar[this.cookieName]).split(',')
             : [];
+    };
 
+    this.isSet = function () {
+        return this.cookieJar[this.cookieName] !== undefined;
+    };
+
+    this.check = function (group) {
+        return this.consent.indexOf(group) !== -1;
+    };
+
+    this.pushToDataLayer = function() {
         if (typeof dataLayer !== 'undefined') {
             if (this.check('Prefrences')) {
                 dataLayer.push({'event':'cookieconsent_preferences'});
@@ -26,14 +36,6 @@ export const CookieConsent = function () {
                 dataLayer.push({'event':'cookieconsent_marketing'});
             }
         }
-    };
-
-    this.isSet = function () {
-        return this.cookieJar[this.cookieName] !== undefined;
-    };
-
-    this.check = function (group) {
-        return this.consent.indexOf(group) !== -1;
     };
 
     this.init();

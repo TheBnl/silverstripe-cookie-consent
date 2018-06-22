@@ -53,6 +53,9 @@ if (CookieConsent.check('Marketing')) {
   // add marketing cookie
 }
 
+// If you use Google Tag Manager this tool can also push the consent into the dataLayer object
+CookieConsent.pushToDataLayer();
+
 // Import the CookieConsentPopup
 import {initCookieConsentPopup} from 'cookieconsent/javascript/src/cookieconsentpopup';
 

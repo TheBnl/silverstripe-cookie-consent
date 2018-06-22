@@ -30,6 +30,7 @@ class CookieConsentForm extends Form
             $fields->add($field = $cookieGroup->createField());
             if (in_array($cookieGroup->ConfigName, $data)) {
                 $field->setValue(1);
+                //$field->
             }
         }
 
