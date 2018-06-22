@@ -5,6 +5,7 @@ namespace Broarm\CookieConsent;
 use Config;
 use DataObject;
 use DB;
+use Director;
 use Exception;
 use FieldList;
 use GridField;
@@ -106,7 +107,7 @@ class CookieGroup extends DataObject
                     $group = self::create(array(
                         'ConfigName' => $groupName,
                         'Title' => _t("CookieConsent.$groupName", $groupName),
-                        'Content' => _t("CookieConsent.{$groupName}Content")
+                        'Content' => _t("CookieConsent.{$groupName}_Content")
                     ));
 
                     $group->write();
@@ -117,7 +118,10 @@ class CookieGroup extends DataObject
                     if (!$cookie = CookieDescription::get()->find('ConfigName', $cookieName)) {
                         $cookie = CookieDescription::create(array(
                             'ConfigName' => $cookieName,
-                            'Title' => $cookieName
+                            'Title' => $cookieName,
+                            'Provider' => _t("CookieConsent.{$cookieName}_Provider", $_SERVER['HTTP_HOST']),
+                            'Purpose' => _t("CookieConsent.{$cookieName}_Purpose", ''),
+                            'Expiry' => _t("CookieConsent.{$cookieName}_Expiry", '')
                         ));
 
                         $group->Cookies()->add($cookie);

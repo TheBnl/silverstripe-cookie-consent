@@ -9,6 +9,9 @@ Broarm\CookieConsent\CookieConsent:
     Necessary:
       - PHPSESSID
       - CookieConsent
+    #Analytics
+    #Marketing
+    #Preferences
 
 Director:
   rules:

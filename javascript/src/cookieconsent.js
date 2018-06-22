@@ -14,6 +14,18 @@ export const CookieConsent = function () {
         this.consent = this.isSet()
             ? decodeURIComponent(this.cookieJar[this.cookieName]).split(',')
             : [];
+
+        Necessary
+        Analytics
+        Marketing
+        Prefrences
+        if (this.check(''))
+            dataLayer.push({'event':'cookieconsent_preferences'});
+        if (this.check(''))
+            dataLayer.push({'event':'cookieconsent_statistics'});
+        if (this.check(''))
+            dataLayer.push({'event':'cookieconsent_marketing'});
+        }
     };
 
     this.isSet = function () {

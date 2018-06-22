@@ -15,6 +15,8 @@ nl:
     AnalyticsContent: '<p>Met analytische cookies zijn wij in staat inzicht te verwerven tot het gebruik van onze site wat ons in staat stelt pagina’s en informatie te verbeteren.</p>'
     Marketing: 'Marketing'
     MarketingContent: '<p>Met marketing cookies volgen wij het succes van onze online campagnes.</p>'
+    Preferences: 'Voorkeuren'
+    PrefrencesContent: '<p>Met voorkeur cookies zijn wij in staat om uw gebruikerservaring te passen.</p>'
     Save: 'Opslaan'
     AcceptAllCookies: 'Alle cookies accepteren'
     ManageCookies: 'Cookie-instellingen beheren'
@@ -22,3 +24,9 @@ nl:
     CookieGroupTableProvider: 'Geplaatst door'
     CookieGroupTablePurpose: 'Doel'
     CookieGroupTableExpiry: 'Maximale bewaartermijn'
+  PHPSESSID:
+    Purpose: 'Session'
+    Expiry: 'Session'
+  CookieConsent:
+    Purpose: 'Bewaart uw cookie voorkeuren'
+    Expiry: '2 maanden'
