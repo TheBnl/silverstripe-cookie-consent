@@ -15,16 +15,16 @@ export const CookieConsent = function () {
             ? decodeURIComponent(this.cookieJar[this.cookieName]).split(',')
             : [];
 
-        Necessary
-        Analytics
-        Marketing
-        Prefrences
-        if (this.check(''))
-            dataLayer.push({'event':'cookieconsent_preferences'});
-        if (this.check(''))
-            dataLayer.push({'event':'cookieconsent_statistics'});
-        if (this.check(''))
-            dataLayer.push({'event':'cookieconsent_marketing'});
+        if (typeof dataLayer !== 'undefined') {
+            if (this.check('Prefrences')) {
+                dataLayer.push({'event':'cookieconsent_preferences'});
+            }
+            if (this.check('Analytics')) {
+                dataLayer.push({'event':'cookieconsent_analytics'});
+            }
+            if (this.check('Marketing')) {
+                dataLayer.push({'event':'cookieconsent_marketing'});
+            }
         }
     };
 
