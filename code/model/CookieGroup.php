@@ -31,6 +31,7 @@ use TextField;
 class CookieGroup extends DataObject
 {
     const REQUIRED_DEFAULT = 'Necessary';
+    const LOCAL_PROVIDER = 'local';
 
     private static $db = array(
         'ConfigName' => 'Varchar(255)',
@@ -102,7 +103,7 @@ class CookieGroup extends DataObject
                 throw new Exception("The required default cookie set is missing, make sure to set the 'Necessary' group");
             }
 
-            foreach ($cookiesConfig as $groupName => $cookies) {
+            foreach ($cookiesConfig as $groupName => $providers) {
                 if (!$group = self::get()->find('ConfigName', $groupName)) {
                     $group = self::create(array(
                         'ConfigName' => $groupName,
@@ -114,19 +115,25 @@ class CookieGroup extends DataObject
                     DB::alteration_message(sprintf('Cookie group "%s" created', $groupName), 'created');
                 }
 
-                foreach ($cookies as $cookieName) {
-                    if (!$cookie = CookieDescription::get()->find('ConfigName', $cookieName)) {
-                        $cookie = CookieDescription::create(array(
-                            'ConfigName' => $cookieName,
-                            'Title' => $cookieName,
-                            'Provider' => _t("CookieConsent.{$cookieName}_Provider", $_SERVER['HTTP_HOST']),
-                            'Purpose' => _t("CookieConsent.{$cookieName}_Purpose", ''),
-                            'Expiry' => _t("CookieConsent.{$cookieName}_Expiry", '')
-                        ));
+                foreach ($providers as $providerName => $cookies) {
+                    $providerLabel = ($providerName === self::LOCAL_PROVIDER)
+                        ? $_SERVER['HTTP_HOST']
+                        : str_replace('_', '.', $providerName);
 
-                        $group->Cookies()->add($cookie);
-                        $cookie->flushCache();
-                        DB::alteration_message(sprintf('Cookie "%s" created and added to group "%s"', $cookieName, $groupName), 'created');
+                    foreach ($cookies as $cookieName) {
+                        if (!$cookie = CookieDescription::get()->find('ConfigName', $cookieName)) {
+                            $cookie = CookieDescription::create(array(
+                                'ConfigName' => $cookieName,
+                                'Title' => $cookieName,
+                                'Provider' => $providerLabel,
+                                'Purpose' => _t("CookieConsent_{$providerName}.{$cookieName}_Purpose", ''),
+                                'Expiry' => _t("CookieConsent_{$providerName}.{$cookieName}_Expiry", '')
+                            ));
+
+                            $group->Cookies()->add($cookie);
+                            $cookie->flushCache();
+                            DB::alteration_message(sprintf('Cookie "%s" created and added to group "%s"', $cookieName, $groupName), 'created');
+                        }
                     }
                 }
 

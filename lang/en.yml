@@ -24,6 +24,7 @@ en:
     CookieGroupTableProvider: 'Placed by'
     CookieGroupTablePurpose: 'Purpose'
     CookieGroupTableExpiry: 'Expiry'
+  CookieConsent_local:
     PHPSESSID_Purpose: 'Session'
     PHPSESSID_Expiry: 'Session'
     CookieConsent_Purpose: 'Stores your cookie preferences'

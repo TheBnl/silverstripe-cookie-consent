@@ -7,8 +7,9 @@ Broarm\CookieConsent\CookieConsent:
   create_default_pages: true
   cookies:
     Necessary:
-      - PHPSESSID
-      - CookieConsent
+      local:
+        - PHPSESSID
+        - CookieConsent
     #Analytics
     #Marketing
     #Preferences

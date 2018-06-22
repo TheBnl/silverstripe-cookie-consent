@@ -8,8 +8,10 @@ composer require bramdeleeuw/cookieconsent
 ``` 
 
 ## Configuration
-You can configure the cookies and cookie groups trough the yml config. 
+You can configure the cookies and cookie groups trough the yml config. You need to configure by provider, for providers the dots are converted to underscores e.g. ads.marketingcompany.com becomes ads_marketingcompany_com.
+
 By configuring cookies trough yml you can check for consent in your code and make the necessary changes e.g. require the analytics or other cookies or skip placing them.
+
 The texts for the configured cookies are editable trough the Site Config, here other cookies can also be added by CMS users. 
 For example if a site user decides to embed a Youtube video he or she can specify the cookies that are placed by Youtube.
 I reccomend the following three groups to be created, these have default content, of course you are free to configure groups as you see fit.
@@ -17,13 +19,34 @@ I reccomend the following three groups to be created, these have default content
 XD\CookieConsent\CookieConsent:
   cookies:
     Necessary:
-      - CookieConsent
-      - ShowPopUp
+      local:
+        - CookieConsent
+        - ShowPopUp
     Marketing:
-      - _track
+      ads_marketingcompany_com:
+        - _track
     Analytics:
-      - _ga
-      - _gid
+      local:
+        - _ga
+        - _gid
+```
+
+This module comes with some default content for cookies we've encountered before. If you want to set default content for these cookies yourself that is possible trough the lang files. If you have cookie descriptions that are not in this module, contributions to the lang files are much appreciated!
+
+The files are structured as such:
+```yaml
+en:
+  CookieConsent_{provider}:
+    {cookie}_Purpose: 'Cookie description'
+    {cookie}_Expiry: 'Cookie expire time'
+  # for cookies from your own domain:
+  CookieConsent_local:
+    PHPSESSID_Purpose: 'Session'
+    PHPSESSID_Expiry: 'Session'
+  # for cookies from an external domain:
+  CookieConsent_ads_marketingcompany_com:
+    _track_Purpose: 'Cookie description'
+    _track_Expiry: 'Cookie expire time'
 ```
 
 Then you can check for consent in your code by calling
