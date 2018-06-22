@@ -2,8 +2,9 @@ nl:
   CookieConsent:
     CookieConsentTitle: 'Deze website maakt gebruik van cookies'
     CookieConsentContent: '<p>Wij maken gebruik van cookies zodat je automatisch kunt inloggen op onze website. We zetten cookies van Google in om activiteiten op onze website te analyseren en onze pagina’s te verbeteren. Hiermee zien we ook hoe je onze website gebruikt en welke pagina’s je interessant vindt. Na je toestemming plaatsen we cookies van social media partners voor socialmedia- en advertentiedoeleinden. Indien gewenst kun je jouw voorkeuren wijzigen onder ‘Cookie-instellingen beheren’.</p>'
+    CookieConsentFormMessage: 'Uw voorkeuren zijn opgeslagen'
     CookiePolicyPageTitle: 'Cookie Policy'
-    CookiePolicyPageContent: '<p>[cookiegrouptable]</p>'
+    CookiePolicyPageContent: '<p>$CookieConsentForm</p><p>[cookiegrouptable]</p>'
     PrivacyPolicyPageTitle: 'Privacy Policy'
     PrivacyPolicyPageContent: '<p>U kunt deze pagina vullen met uw privacy policy</p>'
     TermsAndConditionsPageTitle: 'Algemene voorwaarden'

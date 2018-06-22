@@ -15,8 +15,6 @@ class CookieConsentCheckBoxField extends CheckboxField
 
     protected $fieldHolderTemplate = 'CookieConsentField_holder';
 
-    protected $extraClasses = array('switch-input cookie-consent__field cookie-consent__field--checkbox');
-
     /**
      * @var CookieGroup
      */

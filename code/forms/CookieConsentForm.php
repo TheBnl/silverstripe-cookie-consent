@@ -17,8 +17,6 @@ use Session;
  */
 class CookieConsentForm extends Form
 {
-    protected $template = 'CookieConsentForm';
-
     protected $extraClasses = array('cookie-consent-form');
 
     public function __construct(Controller $controller, $name)
@@ -56,6 +54,7 @@ class CookieConsentForm extends Form
             }
         }
 
+        $form->sessionMessage(_t('CookieConsentFormMessage', 'Your preferences have been saved'), 'good');
         $this->getController()->redirectBack();
     }
 }

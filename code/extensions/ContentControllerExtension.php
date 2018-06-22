@@ -27,6 +27,7 @@ class ContentControllerExtension extends Extension
         if (Config::inst()->get(CookieConsent::class, 'include_javascript')) {
             Requirements::javascript('cookieconsent/javascript/dist/cookieconsent.js');
             if (!CookieConsent::check(CookieGroup::REQUIRED_DEFAULT)) {
+                echo $this->owner->renderWith('CookieConsent')->getValue();
                 Requirements::javascript('cookieconsent/javascript/dist/cookieconsentpopup.js');
             }
         }

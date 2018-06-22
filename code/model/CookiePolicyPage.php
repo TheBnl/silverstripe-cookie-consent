@@ -19,7 +19,7 @@ class CookiePolicyPage extends Page
     public function populateDefaults()
     {
         $this->Title = _t('CookieConsent.CookiePolicyPageTitle', 'Cookie Policy');
-        $this->Content = _t('CookieConsent.CookiePolicyPageContent', '<p>Default cookie policy</p>');
+        $this->Content = _t('CookieConsent.CookiePolicyPageContent', '<p>$CookieConsentForm</p><p>[cookiegrouptable]</p>');
         parent::populateDefaults();
     }
 
@@ -63,18 +63,62 @@ class CookiePolicyPage extends Page
     }
 }
 
+/**
+ * Class CookiePolicyPage_Controller
+ * @mixin CookiePolicyPage
+ */
 class CookiePolicyPage_Controller extends Page_Controller
 {
-    private static $allowed_actions = array('CookieConsentForm');
+    private static $allowed_actions = array(
+        'Form'
+    );
 
+    /**
+     * Make sure we don't trigger the cookie consent popup on this page
+     *
+     * @return SS_HTTPResponse|void
+     */
     public function init()
     {
         parent::init();
         Requirements::block('cookieconsent/javascript/dist/cookieconsentpopup.js');
     }
 
-    public function CookieConsentForm()
+    /**
+     * Using $CookieConsentForm in the Content area of the page shows
+     * where the form should be rendered into. If it does not exist
+     * then default back to $Form.
+     *
+     * Blatantly ripped off with love from UserDefinedForm
+     *
+     * @return array
+     */
+    public function index()
     {
-        return CookieConsentForm::create($this, 'CookieConsentForm');
+        if ($this->Content && $form = $this->Form()) {
+            $hasLocation = stristr($this->Content, '$CookieConsentForm');
+            if ($hasLocation) {
+                $content = preg_replace('/(<p[^>]*>)?\\$CookieConsentForm(<\\/p>)?/i', $form->forTemplate(), $this->Content);
+                return array(
+                    'Content' => DBField::create_field('HTMLText', $content),
+                    'Form' => ""
+                );
+            }
+        }
+
+        return array(
+            'Content' => DBField::create_field('HTMLText', $this->Content),
+            'Form' => $this->Form()
+        );
+    }
+
+    /**
+     * Get the CookieConsentForm
+     *
+     * @return CookieConsentForm
+     */
+    public function Form()
+    {
+        return CookieConsentForm::create($this, 'Form');
     }
 }
