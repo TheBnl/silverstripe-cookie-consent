@@ -11,6 +11,10 @@ use Object;
 class CookieConsent extends Object
 {
     const COOKIE_NAME = 'CookieConsent';
+    const NECESSARY = 'Necessary';
+    const ANALYTICS = 'Analytics';
+    const MARKETING = 'Marketing';
+    const PREFERENCES = 'Preferences';
 
     private static $cookies = array();
 
