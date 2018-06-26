@@ -32,6 +32,8 @@ nl:
     CookieConsent_Expiry: '2 maanden'
     FluentLocale_Purpose: 'Bewaart uw taalvoorkeur'
     FluentLocale_Expiry: '2 maanden'
+    ipcountry_Purpose: 'Taal select standaard keuze'
+    ipcountry_Expiry: 'Sessie'
     _ga_Purpose: 'Statistieken'
     _ga_Expiry: '2 jaar'
     _gat_Purpose: 'Statistieken'

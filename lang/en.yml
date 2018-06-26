@@ -32,6 +32,8 @@ en:
     CookieConsent_Expiry: '2 months'
     FluentLocale_Purpose: 'Stores your language preferences'
     FluentLocale_Expiry: '2 months'
+    ipcountry_Purpose: 'Language select default'
+    ipcountry_Expiry: 'Session'
     _ga_Purpose: 'Statistics'
     _ga_Expiry: '2 years'
     _gat_Purpose: 'Statistics'
