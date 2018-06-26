@@ -47,13 +47,10 @@ nl:
   CookieConsent__ads_linkedin_com:
     BizoID_Purpose: 'Marketing doeleinden'
     BizoID_Expiry: '6 maanden'
-    BizoID_Provider: '.ads.linkedin.com'
     UserMatchHistory_Purpose: 'Marketing doeleinden'
     UserMatchHistory_Expiry: '6 maanden'
-    UserMatchHistory_Provider: '.ads.linkedin.com'
     lang_Purpose: 'Taal voorkeuren'
     lang_Expiry: 'Session'
-    lang_Provider: '.ads.linkedin.com'
   CookieConsent__linkedin_com:
     bcookie_Purpose: 'Marketing doeleinden'
     bcookie_Expiry: '2 jaar'
