@@ -34,10 +34,6 @@ class CookieDescription extends DataObject
         'Expiry' => 'Varchar(255)'
     );
 
-    private static $indexes = array(
-        'ConfigName' => true
-    );
-
     private static $has_one = array(
         'Group' => 'Broarm\\CookieConsent\\CookieGroup'
     );
