@@ -19,7 +19,7 @@ class CookiePolicyPage extends Page
     public function populateDefaults()
     {
         $this->Title = _t('CookieConsent.CookiePolicyPageTitle', 'Cookie Policy');
-        $this->Content = _t('CookieConsent.CookiePolicyPageContent', '<p>$CookieConsentForm</p><p>[cookiegrouptable]</p>');
+        $this->Content = _t('CookieConsent.CookiePolicyPageContent', '<p>$CookieConsentForm</p><p>[cookiegrouptable group="Necessary"]</p><p>[cookiegrouptable group="Analytics"]</p><p>[cookiegrouptable group="Marketing"]</p><p>[cookiegrouptable group="Preferences"]</p>');
         parent::populateDefaults();
     }
 

@@ -72,14 +72,15 @@ class CookieConsent extends Object
     {
         $consent = self::getConsent();
         $key = array_search($group, $consent);
-
         $cookies = Config::inst()->get(CookieConsent::class, 'cookies');
         if (isset($cookies[$group])) {
-            foreach ($cookies[$group] as $cookie) {
-                $host = Director::protocolAndHost();
-                $host = str_replace(Director::protocol(), '', $host);
-                $host = str_replace('www.', '', $host);
-                Cookie::force_expiry($cookie, null, ".$host");
+            foreach ($cookies[$group] as $host => $cookies) {
+                $host = ($host === CookieGroup::LOCAL_PROVIDER)
+                    ? $_SERVER['HTTP_HOST']
+                    : str_replace('_', '.', $host);
+                foreach ($cookies as $cookie) {
+                    Cookie::force_expiry($cookie, null, $host);
+                }
             }
         }
 

@@ -7,6 +7,8 @@
 
 namespace Broarm\CookieConsent;
 
+use Controller;
+use Page_Controller;
 use ShortcodeParser;
 
 class CookieGroupTable
@@ -22,7 +24,9 @@ class CookieGroupTable
                 return $group->renderWith('CookieGroupTable')->getValue();
             }
 
-            return '[cookiegrouptable]';
+            // Return the full string in the CMS so it will not delete itself,
+            // but hide on the frond end if group not found
+            return Controller::curr() instanceof Page_Controller ? null : "[cookiegrouptable group=\"$group\"]";
         });
     }
 }
