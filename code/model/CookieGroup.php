@@ -121,7 +121,12 @@ class CookieGroup extends DataObject
                         : str_replace('_', '.', $providerName);
 
                     foreach ($cookies as $cookieName) {
-                        if (!$cookie = CookieDescription::get()->find('ConfigName', $cookieName)) {
+                        $cookie = CookieDescription::get()->filter(array(
+                            'ConfigName' => $cookieName,
+                            'Provider' => $providerLabel
+                        ))->first();
+
+                        if (!$cookie) {
                             $cookie = CookieDescription::create(array(
                                 'ConfigName' => $cookieName,
                                 'Title' => $cookieName,
