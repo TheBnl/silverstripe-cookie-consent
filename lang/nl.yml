@@ -116,6 +116,6 @@ nl:
     _ga_Expiry: '2 jaar'
   CookieConsent__fontawesome_com:
     _ga_Purpose: 'Fontawesome analytics'
-    _Expiry: '2 jaar'
+    _ga_Expiry: '2 jaar'
     _gid_Purpose: 'Fontawesome analytics'
     _gid_Expiry: '2 jaar'

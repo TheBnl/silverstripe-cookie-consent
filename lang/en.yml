@@ -116,6 +116,6 @@ en:
     _ga_Expiry: '2 years'
   CookieConsent__fontawesome_com:
     _ga_Purpose: 'Fontawesome analytics'
-    _Expiry: '2 years'
+    _ga_Expiry: '2 years'
     _gid_Purpose: 'Fontawesome analytics'
     _gid_Expiry: '2 years'
