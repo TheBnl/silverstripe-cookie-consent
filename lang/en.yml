@@ -114,3 +114,8 @@ en:
     OTZ_Expiry: '1 month'
     _ga_Purpose: 'reCAPTCHA analytics'
     _ga_Expiry: '2 years'
+  CookieConsent__fontawesome_com:
+    _ga_Purpose: 'Fontawesome analytics'
+    _Expiry: '2 years'
+    _gid_Purpose: 'Fontawesome analytics'
+    _gid_Expiry: '2 years'
