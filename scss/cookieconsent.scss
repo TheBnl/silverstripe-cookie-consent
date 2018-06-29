@@ -1,9 +1,22 @@
 @import "../node_modules/foundation-sites/scss/foundation";
 @include foundation-reveal;
 
-.cookie-consent {
+.cookie-consent {    
+    max-width: calc(100% - 2rem);
+    margin: 1rem;
+    height: auto;
+    min-height: auto;
     &__button {
-        margin-bottom: 0;
+        margin-bottom: .5rem;
+        display: block;
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        @include breakpoint(medium) {
+            margin-bottom: 0;
+            display: inline-block;
+        }
     }
     &__field {
         &--checkbox {

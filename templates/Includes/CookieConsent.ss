@@ -1,5 +1,5 @@
 <% if not $CookieConsent %>
-<div class="cookie-consent reveal" id="cookie-consent">
+<div class="reveal cookie-consent" id="cookie-consent">
     <h3>$SiteConfig.CookieConsentTitle</h3>
     $SiteConfig.CookieConsentContent
     <div class="cookie-consent__buttons">
