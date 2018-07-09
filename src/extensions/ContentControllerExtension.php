@@ -3,15 +3,20 @@
 namespace Broarm\CookieConsent;
 
 use CookiePolicyPage;
-use Extension;
-use Config;
-use Requirements;
-use Controller;
+use Exception;
+use SilverStripe\CMS\Controllers\ContentController;
+use SilverStripe\Core\Extension;
+use SilverStripe\Core\Config\Config;
+use SilverStripe\Core\Manifest\ModuleLoader;
+use SilverStripe\ORM\DataObject;
+use SilverStripe\Security\Security;
+use SilverStripe\View\Requirements;
+use SilverStripe\Control\Controller;
 
 /**
  * Class ContentControllerExtension
  * @package Broarm\CookieConsent
- * @property \ContentController owner
+ * @property ContentController owner
  */
 class ContentControllerExtension extends Extension
 {
@@ -24,15 +29,17 @@ class ContentControllerExtension extends Extension
      */
     public function onAfterInit()
     {
-        if (Config::inst()->get(CookieConsent::class, 'include_javascript')) {
-            Requirements::javascript('cookieconsent/javascript/dist/cookieconsent.js');
+        $security = $this->owner instanceof Security;
+        $module = ModuleLoader::getModule('bramdeleeuw/cookieconsent');
+        if (!$security && Config::inst()->get(CookieConsent::class, 'include_javascript')) {
+            Requirements::javascript($module->getResource('javascript/dist/cookieconsent.js')->getRelativePath());
             if (!CookieConsent::check(CookieGroup::REQUIRED_DEFAULT)) {
-                Requirements::javascript('cookieconsent/javascript/dist/cookieconsentpopup.js');
+                Requirements::javascript($module->getResource('javascript/dist/cookieconsentpopup.js')->getRelativePath());
             }
         }
 
-        if (Config::inst()->get(CookieConsent::class, 'include_css')) {
-            Requirements::css('cookieconsent/css/cookieconsent.css');
+        if (!$security && Config::inst()->get(CookieConsent::class, 'include_css')) {
+            Requirements::css($module->getResource('css/cookieconsent.css')->getRelativePath());
         }
     }
 
@@ -41,7 +48,7 @@ class ContentControllerExtension extends Extension
      *
      * @param $group
      * @return bool
-     * @throws \Exception
+     * @throws Exception
      */
     public function CookieConsent($group = CookieGroup::REQUIRED_DEFAULT)
     {
@@ -51,7 +58,7 @@ class ContentControllerExtension extends Extension
     /**
      * Get an instance of the cookie policy page
      *
-     * @return CookiePolicyPage|\DataObject
+     * @return CookiePolicyPage|DataObject
      */
     public function getCookiePolicyPage()
     {

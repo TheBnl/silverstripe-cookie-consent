@@ -2,18 +2,18 @@
 
 namespace Broarm\CookieConsent;
 
-use Config;
-use DataObject;
-use DB;
-use Director;
 use Exception;
-use FieldList;
-use GridField;
-use HasManyList;
-use HtmlEditorField;
-use Tab;
-use TabSet;
-use TextField;
+use SilverStripe\Core\Config\Config;
+use SilverStripe\ORM\DataObject;
+use SilverStripe\ORM\DB;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\GridField\GridField;
+use SilverStripe\ORM\HasManyList;
+use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
+use SilverStripe\Forms\Tab;
+use SilverStripe\Forms\TabSet;
+use SilverStripe\Forms\TextField;
+use SilverStripe\View\SSViewer;
 
 /**
  * CookieGroup that holds type of cookies
@@ -33,10 +33,12 @@ class CookieGroup extends DataObject
     const REQUIRED_DEFAULT = 'Necessary';
     const LOCAL_PROVIDER = 'local';
 
+    private static $table_name = 'CookieGroup';
+
     private static $db = array(
         'ConfigName' => 'Varchar(255)',
         'Title' => 'Varchar(255)',
-        'Content' => 'HtmlText',
+        'Content' => 'HTMLText',
     );
 
     private static $indexes = array(
@@ -93,7 +95,6 @@ class CookieGroup extends DataObject
 
     /**
      * @throws Exception
-     * @throws \ValidationException
      */
     public function requireDefaultRecords()
     {
@@ -108,7 +109,7 @@ class CookieGroup extends DataObject
                     $group = self::create(array(
                         'ConfigName' => $groupName,
                         'Title' => _t("CookieConsent.$groupName", $groupName),
-                        'Content' => _t("CookieConsent.{$groupName}_Content")
+                        'Content' => _t("CookieConsent.{$groupName}_Content", $groupName)
                     ));
 
                     $group->write();
@@ -131,8 +132,8 @@ class CookieGroup extends DataObject
                                 'ConfigName' => $cookieName,
                                 'Title' => $cookieName,
                                 'Provider' => $providerLabel,
-                                'Purpose' => _t("CookieConsent_{$providerName}.{$cookieName}_Purpose", ''),
-                                'Expiry' => _t("CookieConsent_{$providerName}.{$cookieName}_Expiry", '')
+                                'Purpose' => _t("CookieConsent_{$providerName}.{$cookieName}_Purpose", "$cookieName"),
+                                'Expiry' => _t("CookieConsent_{$providerName}.{$cookieName}_Expiry", 'Session')
                             ));
 
                             $group->Cookies()->add($cookie);
@@ -147,7 +148,7 @@ class CookieGroup extends DataObject
         }
     }
 
-    public function canCreate($member = null)
+    public function canCreate($member = null, $context = [])
     {
         return false;
     }

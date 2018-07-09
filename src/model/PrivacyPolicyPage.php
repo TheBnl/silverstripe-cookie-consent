@@ -1,6 +1,8 @@
 <?php
 
 use Broarm\CookieConsent\CookieConsent;
+use SilverStripe\Core\Config\Config;
+use SilverStripe\ORM\DB;
 
 /**
  * Model for creating a default privacy policy page
@@ -22,7 +24,7 @@ class PrivacyPolicyPage extends Page
     }
 
     /**
-     * @throws ValidationException
+     * @throws Exception
      */
     public function requireDefaultRecords()
     {
@@ -33,13 +35,5 @@ class PrivacyPolicyPage extends Page
             $page->flushCache();
             DB::alteration_message('Privacy Policy page created', 'created');
         }
-    }
-}
-
-class PrivacyPolicyPage_Controller extends Page_Controller
-{
-    public function init()
-    {
-        parent::init();
     }
 }

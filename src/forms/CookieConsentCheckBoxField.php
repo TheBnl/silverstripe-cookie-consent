@@ -2,7 +2,7 @@
 
 namespace Broarm\CookieConsent;
 
-use CheckboxField;
+use SilverStripe\Forms\CheckboxField;
 
 /**
  * Class CookieConsentCheckBoxField
@@ -11,10 +11,6 @@ use CheckboxField;
  */
 class CookieConsentCheckBoxField extends CheckboxField
 {
-    protected $template = 'CookieConsentCheckBoxField';
-
-    protected $fieldHolderTemplate = 'CookieConsentField_holder';
-
     /**
      * @var CookieGroup
      */

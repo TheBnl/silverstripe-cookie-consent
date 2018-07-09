@@ -1,6 +1,8 @@
 <?php
 
 use Broarm\CookieConsent\CookieConsent;
+use SilverStripe\Core\Config\Config;
+use SilverStripe\ORM\DB;
 
 /**
  * Model for creating a default terms and conditions page
@@ -22,7 +24,7 @@ class TermsAndConditionsPage extends Page
     }
 
     /**
-     * @throws ValidationException
+     * @throws Exception
      */
     public function requireDefaultRecords()
     {
@@ -33,13 +35,5 @@ class TermsAndConditionsPage extends Page
             $page->flushCache();
             DB::alteration_message('Terms and Conditions page created', 'created');
         }
-    }
-}
-
-class TermsAndConditionsPage_Controller extends Page_Controller
-{
-    public function init()
-    {
-        parent::init();
     }
 }

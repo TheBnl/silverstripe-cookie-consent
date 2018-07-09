@@ -2,13 +2,13 @@
 
 namespace Broarm\CookieConsent;
 
-use DataExtension;
-use GridField;
-use GridFieldConfig_RecordEditor;
-use TextField;
-use HtmlEditorField;
-use FieldList;
-use SiteConfig;
+use SilverStripe\ORM\DataExtension;
+use SilverStripe\Forms\GridField\GridField;
+use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
+use SilverStripe\Forms\TextField;
+use SilverStripe\Forms\HTMLEditor\HTMLEditorField;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\SiteConfig\SiteConfig;
 
 /**
  * Class SiteConfigExtension
@@ -18,7 +18,7 @@ class SiteConfigExtension extends DataExtension
 {
     private static $db = array(
         'CookieConsentTitle' => 'Varchar(255)',
-        'CookieConsentContent' => 'HtmlText'
+        'CookieConsentContent' => 'HTMLText'
     );
 
     private static $translate = array(
@@ -42,7 +42,7 @@ class SiteConfigExtension extends DataExtension
     /**
      * Set the defaults this way beacause the SiteConfig is probably already created
      *
-     * @throws \ValidationException
+     * @throws \SilverStripe\ORM\ValidationException
      */
     public function requireDefaultRecords()
     {

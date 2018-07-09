@@ -1,13 +1,13 @@
 <?php
 namespace Broarm\CookieConsent;
 
-use GridFieldAddNewInlineButton;
-use GridFieldConfig;
-use GridFieldDeleteAction;
-use GridFieldEditableColumns;
-use GridFieldFilterHeader;
-use GridFieldSortableHeader;
-use GridFieldToolbarHeader;
+use Symbiote\GridFieldExtensions\GridFieldAddNewInlineButton;
+use SilverStripe\Forms\GridField\GridFieldConfig;
+use SilverStripe\Forms\GridField\GridFieldDeleteAction;
+use Symbiote\GridFieldExtensions\GridFieldEditableColumns;
+use SilverStripe\Forms\GridField\GridFieldFilterHeader;
+use SilverStripe\Forms\GridField\GridFieldSortableHeader;
+use SilverStripe\Forms\GridField\GridFieldToolbarHeader;
 
 /**
  * Class GridFieldConfigCookies

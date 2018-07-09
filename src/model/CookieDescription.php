@@ -2,12 +2,12 @@
 
 namespace Broarm\CookieConsent;
 
-use Config;
-use DataObject;
-use FieldList;
-use Tab;
-use TabSet;
-use TextField;
+use SilverStripe\Core\Config\Config;
+use SilverStripe\ORM\DataObject;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\Tab;
+use SilverStripe\Forms\TabSet;
+use SilverStripe\Forms\TextField;
 
 /**
  * A description for a used cookie
@@ -26,6 +26,8 @@ use TextField;
  */
 class CookieDescription extends DataObject
 {
+    private static $table_name = 'CookieDescription';
+
     private static $db = array(
         'ConfigName' => 'Varchar(255)',
         'Title' => 'Varchar(255)',

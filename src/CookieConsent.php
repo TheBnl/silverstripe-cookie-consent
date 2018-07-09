@@ -2,14 +2,25 @@
 
 namespace Broarm\CookieConsent;
 
-use Config;
-use Cookie;
-use Director;
 use Exception;
-use Object;
+use SilverStripe\Core\Config\Config;
+use SilverStripe\Control\Cookie;
+use SilverStripe\Core\Config\Configurable;
+use SilverStripe\Core\Extensible;
+use SilverStripe\Core\Injector\Injectable;
 
-class CookieConsent extends Object
+/**
+ * Class CookieConsent
+ *
+ * @package Broarm
+ * @subpackage CookieConsent
+ */
+class CookieConsent
 {
+    use Extensible;
+    use Injectable;
+    use Configurable;
+
     const COOKIE_NAME = 'CookieConsent';
     const NECESSARY = 'Necessary';
     const ANALYTICS = 'Analytics';

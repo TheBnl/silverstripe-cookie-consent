@@ -2,13 +2,11 @@
 
 namespace Broarm\CookieConsent;
 
-use Config;
-use Controller;
-use Cookie;
-use FieldList;
-use Form;
-use FormAction;
-use Session;
+use SilverStripe\Core\Config\Config;
+use SilverStripe\Control\Controller;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\Form;
+use SilverStripe\Forms\FormAction;
 
 /**
  * Class CookieConsentForm
