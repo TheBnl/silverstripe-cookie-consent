@@ -16,7 +16,7 @@ Broarm\CookieConsent\CookieConsent:
 
 SilverStripe\Control\Director:
   rules:
-    acceptAllCookies: Page_Controller
+    acceptAllCookies: PageController
 
 SilverStripe\CMS\Controllers\ContentController:
   extensions:
