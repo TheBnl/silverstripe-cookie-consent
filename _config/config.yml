@@ -2,9 +2,6 @@
 Name: cookieconsent
 ---
 Broarm\CookieConsent\CookieConsent:
-  include_javascript: true
-  include_css: true
-  create_default_pages: true
   cookies:
     Necessary:
       local:
