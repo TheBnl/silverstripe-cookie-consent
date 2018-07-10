@@ -7,6 +7,11 @@ Install the module trough composer:
 composer require bramdeleeuw/cookieconsent
 ``` 
 
+Include the popup template in your base Page.ss
+```html
+<% include CookieConsent %>
+```
+
 ## Configuration
 You can configure the cookies and cookie groups trough the yml config. You need to configure by provider, for providers the dots are converted to underscores e.g. ads.marketingcompany.com becomes ads_marketingcompany_com.
 
@@ -16,7 +21,7 @@ The texts for the configured cookies are editable trough the Site Config, here o
 For example if a site user decides to embed a Youtube video he or she can specify the cookies that are placed by Youtube.
 I reccomend the following three groups to be created, these have default content, of course you are free to configure groups as you see fit.
 ```yaml
-XD\CookieConsent\CookieConsent:
+Broarm\CookieConsent\CookieConsent:
   cookies:
     Necessary:
       local:
@@ -59,7 +64,7 @@ if (CookieConsent::check('Analytics')) {
 You can also configure the requirement of the default js and css. 
 Make sure you combine at least the javascript in you bundle if you chose not to require by default!
 ```yaml
-XD\CookieConsent\CookieConsent:
+Broarm\CookieConsent\CookieConsent:
   include_javascript: true
   include_css: true
   create_default_pages: true
