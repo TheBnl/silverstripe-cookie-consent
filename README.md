@@ -74,15 +74,17 @@ Broarm\CookieConsent\CookieConsent:
 If you want to include the scss or js in your own bundle you can do that by:
 ```js
 // Import the CookieConsent utility 
-import {CookieConsent} from 'cookieconsent/javascript/src/cookieconsent';
+import CookieConsent from 'cookieconsent/javascript/src/cookieconsent';
+
+consent = new CookieConsent();
 
 // This tool let's you check for cookie consent in your js files before you apply any cookies
-if (CookieConsent.check('Marketing')) {
+if (consent.check('Marketing')) {
   // add marketing cookie
 }
 
 // If you use Google Tag Manager this tool can also push the consent into the dataLayer object
-CookieConsent.pushToDataLayer();
+consent.pushToDataLayer();
 
 // Import the CookieConsentPopup
 import {initCookieConsentPopup} from 'cookieconsent/javascript/src/cookieconsentpopup';

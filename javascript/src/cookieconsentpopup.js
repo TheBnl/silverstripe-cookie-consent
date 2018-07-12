@@ -1,7 +1,7 @@
 import 'jquery';
 import 'foundation-sites/js/foundation.core';
 import {Reveal} from 'foundation-sites/js/foundation.reveal';
-import {CookieConsent} from './cookieconsent'
+import CookieConsent from './cookieconsent'
 
 (($) => {
     'use strict';
@@ -13,8 +13,8 @@ import {CookieConsent} from './cookieconsent'
 })(jQuery);
 
 export const initCookieConsentPopup = function () {
-    const Consent = new CookieConsent();
-    if (!Consent.isSet()) {
+    const consent = new CookieConsent();
+    if (!consent.isSet()) {
         new Reveal($('#cookie-consent'), {
             closeOnClick: false,
             closeOnEsc: false

@@ -1,9 +1,9 @@
-export const CookieConsent = function () {
-    this.cookieName = 'CookieConsent';
-    this.cookieJar = [];
-    this.consent = [];
+export default class CookieConsent {
+    constructor() {
+        this.cookieName = 'CookieConsent';
+        this.cookieJar = [];
+        this.consent = [];
 
-    this.init = function () {
         let cookies = document.cookie ? document.cookie.split('; ') : [];
         for (let i = 0; i < cookies.length; i++) {
             let parts = cookies[i].split('=');
@@ -16,15 +16,15 @@ export const CookieConsent = function () {
             : [];
     };
 
-    this.isSet = function () {
+    isSet() {
         return this.cookieJar[this.cookieName] !== undefined;
     };
 
-    this.check = function (group) {
+    check(group) {
         return this.consent.indexOf(group) !== -1;
     };
 
-    this.pushToDataLayer = function() {
+    pushToDataLayer() {
         if (typeof dataLayer !== 'undefined') {
             if (this.check('Prefrences')) {
                 dataLayer.push({'event':'cookieconsent_preferences'});
@@ -37,6 +37,4 @@ export const CookieConsent = function () {
             }
         }
     };
-
-    this.init();
-};
+}
