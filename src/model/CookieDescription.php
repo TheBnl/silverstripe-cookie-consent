@@ -82,9 +82,12 @@ class CookieDescription extends DataObject
     {
         $cookieConfig = Config::inst()->get(CookieConsent::class, 'cookies');
         $found = false;
-        foreach ($cookieConfig as $group => $cookies) {
+        foreach ($cookieConfig as $group => $domains) {
             if ($found) break;
-            $found = in_array($this->ConfigName, $cookies);
+            foreach ($domains as $cookies) {
+                if ($found) break;
+                $found = in_array($this->ConfigName, $cookies);
+            }
         }
 
         return !$found;
