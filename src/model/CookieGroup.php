@@ -3,6 +3,8 @@
 namespace Broarm\CookieConsent;
 
 use Exception;
+use SilverStripe\Control\Director;
+use SilverStripe\Core\Environment;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\DB;
@@ -117,9 +119,13 @@ class CookieGroup extends DataObject
                 }
 
                 foreach ($providers as $providerName => $cookies) {
-                    $providerLabel = ($providerName === self::LOCAL_PROVIDER)
-                        ? $_SERVER['HTTP_HOST']
-                        : str_replace('_', '.', $providerName);
+                    if ($providerName === self::LOCAL_PROVIDER && Director::is_cli() && $url = Environment::getEnv('SS_BASE_URL')) {
+                        $providerLabel = parse_url($url, PHP_URL_HOST);
+                    } elseif ($providerName === self::LOCAL_PROVIDER) {
+                        $providerLabel = Director::hostName();
+                    } else {
+                        $providerLabel = str_replace('_', '.', $providerName);
+                    }
 
                     foreach ($cookies as $cookieName) {
                         $cookie = CookieDescription::get()->filter(array(
