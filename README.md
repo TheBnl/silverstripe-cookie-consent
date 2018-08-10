@@ -36,7 +36,7 @@ Broarm\CookieConsent\CookieConsent:
         - _gid
 ```
 
-This module comes with some default content for cookies we've encountered before. If you want to set default content for these cookies yourself that is possible trough the lang files. If you have cookie descriptions that are not in this module, contributions to the lang files are much appreciated!
+This module comes with some default content for cookies we've encountered before. If you want to set default content for these cookies yourself that is possible trough the lang files. If you have cookie descriptions that are not in this module, contributions to the lang files are much appreciated! Translations are managed trough [Transifex](https://www.transifex.com/xd/cookie-consent).
 
 The files are structured as such:
 ```yaml
