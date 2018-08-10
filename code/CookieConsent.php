@@ -16,6 +16,10 @@ class CookieConsent extends Object
     const MARKETING = 'Marketing';
     const PREFERENCES = 'Preferences';
 
+    private static $required = array(
+        self::NECESSARY
+    );
+
     private static $cookies = array();
 
     private static $include_javascript = true;
@@ -31,7 +35,7 @@ class CookieConsent extends Object
      * @return bool
      * @throws Exception
      */
-    public static function check($group = CookieGroup::REQUIRED_DEFAULT)
+    public static function check($group = CookieConsent::NECESSARY)
     {
         $cookies = self::config()->get('cookies');
         if (!isset($cookies[$group])) {
@@ -109,7 +113,18 @@ class CookieConsent extends Object
      */
     public static function setConsent($consent)
     {
-        array_push($consent, CookieGroup::REQUIRED_DEFAULT);
-        Cookie::set(CookieConsent::COOKIE_NAME, implode(',', array_unique($consent)), 90, null, null, false, false);
+        $consent = array_merge($consent, self::config()->get('required'));
+        Cookie::set(CookieConsent::COOKIE_NAME, implode(',', $consent), 90, null, null, false, false);
+    }
+
+    /**
+     * Check if the group is required
+     *
+     * @param $group
+     * @return bool
+     */
+    public static function isRequired($group)
+    {
+        return in_array($group, self::config()->get('required'));
     }
 }

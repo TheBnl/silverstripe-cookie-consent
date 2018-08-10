@@ -46,11 +46,11 @@ class CookieConsentForm extends Form
      */
     public function submitConsent($data, Form $form)
     {
-        CookieConsent::grant(CookieGroup::REQUIRED_DEFAULT);
+        CookieConsent::grant(CookieConsent::config()->get('required'));
         foreach (Config::inst()->get(CookieConsent::class, 'cookies') as $group => $cookies) {
             if (isset($data[$group]) && $data[$group]) {
                 CookieConsent::grant($group);
-            } elseif ($group !== CookieGroup::REQUIRED_DEFAULT) {
+            } elseif (!CookieConsent::isRequired($group)) {
                 CookieConsent::remove($group);
             }
         }

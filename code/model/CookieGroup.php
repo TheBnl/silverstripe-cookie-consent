@@ -30,7 +30,6 @@ use TextField;
  */
 class CookieGroup extends DataObject
 {
-    const REQUIRED_DEFAULT = 'Necessary';
     const LOCAL_PROVIDER = 'local';
 
     private static $db = array(
@@ -78,7 +77,7 @@ class CookieGroup extends DataObject
      */
     public function isRequired()
     {
-        return $this->ConfigName === self::REQUIRED_DEFAULT;
+        return CookieConsent::isRequired($this->ConfigName);
     }
 
     /**
@@ -98,9 +97,13 @@ class CookieGroup extends DataObject
     public function requireDefaultRecords()
     {
         parent::requireDefaultRecords();
-        if ($cookiesConfig = Config::inst()->get(CookieConsent::class, 'cookies')) {
-            if (!isset($cookiesConfig[self::REQUIRED_DEFAULT])) {
-                throw new Exception("The required default cookie set is missing, make sure to set the 'Necessary' group");
+        $cookiesConfig = CookieConsent::config()->get('cookies');
+        $necessaryGroups = CookieConsent::config()->get('necessary');
+        if ($cookiesConfig && $necessaryGroups) {
+            foreach (CookieConsent::config()->get('necessary') as $necessary) {
+                if (!isset($cookiesConfig[$necessary])) {
+                    throw new Exception("The required default cookie set is missing, make sure to set the '{$necessary}' group");
+                }
             }
 
             foreach ($cookiesConfig as $groupName => $providers) {
@@ -160,7 +163,7 @@ class CookieGroup extends DataObject
      */
     public function canDelete($member = null)
     {
-        $cookieConfig = Config::inst()->get(CookieConsent::class, 'cookies');
+        $cookieConfig = CookieConsent::config()->get('cookies');
         return !isset($cookieConfig[$this->ConfigName]);
     }
 }
