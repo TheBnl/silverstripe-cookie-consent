@@ -67,6 +67,12 @@ en:
     uid_Expiry: '1 year'
     uvc_Purpose: 'Social media share buttons'
     uvc_Expiry: '1 year'
+    loc_Purpose: 'Social media share buttons'
+    loc_Expiry: '1 year'
+    na_id_Purpose: 'Social media share buttons'
+    na_id_Expiry: '1 year'
+    na_tc_Purpose: 'Social media share buttons'
+    na_tc_Expiry: '1 year'
   CookieConsent__facebook_com:
     fr_Purpose: 'Facebook SDK'
     fr_Expiry: '2 months'

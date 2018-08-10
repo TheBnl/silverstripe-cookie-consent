@@ -67,6 +67,12 @@ nl:
     uid_Expiry: '1 jaar'
     uvc_Purpose: 'Social media deel knoppen'
     uvc_Expiry: '1 jaar'
+    loc_Purpose: 'Social media deel knoppen'
+    loc_Expiry: '1 jaar'
+    na_id_Purpose: 'Social media deel knoppen'
+    na_id_Expiry: '1 jaar'
+    na_tc_Purpose: 'Social media deel knoppen'
+    na_tc_Expiry: '1 jaar'
   CookieConsent__facebook_com:
     fr_Purpose: 'Facebook SDK'
     fr_Expiry: '2 maanden'
