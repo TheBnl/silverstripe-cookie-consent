@@ -58,7 +58,11 @@ class CookieConsent extends Object
     public static function grant($group)
     {
         $consent = self::getConsent();
-        array_push($consent, $group);
+        if (is_array($group)) {
+            $consent = array_merge($consent, $group);
+        } else {
+            array_push($consent, $group);
+        }
         self::setConsent($consent);
     }
 
@@ -113,7 +117,7 @@ class CookieConsent extends Object
      */
     public static function setConsent($consent)
     {
-        $consent = array_merge($consent, self::config()->get('required_groups'));
+        $consent = array_filter(array_unique(array_merge($consent, self::config()->get('required_groups'))));
         Cookie::set(CookieConsent::COOKIE_NAME, implode(',', $consent), 90, null, null, false, false);
     }
 
