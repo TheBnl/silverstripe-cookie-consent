@@ -100,7 +100,7 @@ class CookieGroup extends DataObject
         $cookiesConfig = CookieConsent::config()->get('cookies');
         $necessaryGroups = CookieConsent::config()->get('required_groups');
         if ($cookiesConfig && $necessaryGroups) {
-            foreach ($necessaryGroups as $necessary) {
+            foreach (array_unique($necessaryGroups) as $necessary) {
                 if (!isset($cookiesConfig[$necessary])) {
                     throw new Exception("The required default cookie set is missing, make sure to set the '{$necessary}' group");
                 }
