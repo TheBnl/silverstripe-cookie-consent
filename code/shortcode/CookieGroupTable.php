@@ -19,7 +19,8 @@ class CookieGroupTable
     public static function register()
     {
         ShortcodeParser::get('default')->register('cookiegrouptable', function ($arguments, $address, $parser, $shortcode) {
-            $group = (isset($arguments['group']) && $arguments['group']) ? $arguments['group'] : CookieGroup::REQUIRED_DEFAULT;
+            $defaultGroups = CookieConsent::config()->get('required_groups');
+            $group = (isset($arguments['group']) && $arguments['group']) ? $arguments['group'] : $defaultGroups[0];
             if ($group = CookieGroup::get()->find('ConfigName', $group)) {
                 return $group->renderWith('CookieGroupTable')->getValue();
             }
