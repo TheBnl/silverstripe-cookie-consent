@@ -33,7 +33,7 @@ class ContentControllerExtension extends Extension
         $module = ModuleLoader::getModule('bramdeleeuw/cookieconsent');
         if (!$security && Config::inst()->get(CookieConsent::class, 'include_javascript')) {
             Requirements::javascript($module->getResource('javascript/dist/cookieconsent.js')->getRelativePath());
-            if (!CookieConsent::check(CookieGroup::REQUIRED_DEFAULT)) {
+            if (!CookieConsent::check(CookieConsent::NECESSARY)) {
                 Requirements::javascript($module->getResource('javascript/dist/cookieconsentpopup.js')->getRelativePath());
             }
         }
@@ -50,7 +50,7 @@ class ContentControllerExtension extends Extension
      * @return bool
      * @throws Exception
      */
-    public function CookieConsent($group = CookieGroup::REQUIRED_DEFAULT)
+    public function CookieConsent($group = CookieConsent::NECESSARY)
     {
         return CookieConsent::check($group);
     }

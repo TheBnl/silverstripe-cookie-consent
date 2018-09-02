@@ -3,6 +3,7 @@
 namespace Broarm\CookieConsent;
 
 use Exception;
+use SilverStripe\Control\Director;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Control\Cookie;
 use SilverStripe\Core\Config\Configurable;
@@ -27,7 +28,11 @@ class CookieConsent
     const MARKETING = 'Marketing';
     const PREFERENCES = 'Preferences';
 
-    private static $cookies = array();
+    private static $required_groups = [
+        self::NECESSARY
+    ];
+
+    private static $cookies = [];
 
     private static $include_javascript = true;
 
@@ -42,7 +47,7 @@ class CookieConsent
      * @return bool
      * @throws Exception
      */
-    public static function check($group = CookieGroup::REQUIRED_DEFAULT)
+    public static function check($group = CookieConsent::NECESSARY)
     {
         $cookies = self::config()->get('cookies');
         if (!isset($cookies[$group])) {
@@ -65,7 +70,11 @@ class CookieConsent
     public static function grant($group)
     {
         $consent = self::getConsent();
-        array_push($consent, $group);
+        if (is_array($group)) {
+            $consent = array_merge($consent, $group);
+        } else {
+            array_push($consent, $group);
+        }
         self::setConsent($consent);
     }
 
@@ -91,7 +100,7 @@ class CookieConsent
         if (isset($cookies[$group])) {
             foreach ($cookies[$group] as $host => $cookies) {
                 $host = ($host === CookieGroup::LOCAL_PROVIDER)
-                    ? $_SERVER['HTTP_HOST']
+                    ? Director::hostName()
                     : str_replace('_', '.', $host);
                 foreach ($cookies as $cookie) {
                     Cookie::force_expiry($cookie, null, $host);
@@ -120,7 +129,18 @@ class CookieConsent
      */
     public static function setConsent($consent)
     {
-        array_push($consent, CookieGroup::REQUIRED_DEFAULT);
-        Cookie::set(CookieConsent::COOKIE_NAME, implode(',', array_unique($consent)), 90, null, null, false, false);
+        $consent = array_filter(array_unique(array_merge($consent, self::config()->get('required_groups'))));
+        Cookie::set(CookieConsent::COOKIE_NAME, implode(',', $consent), 90, null, null, false, false);
+    }
+
+    /**
+     * Check if the group is required
+     *
+     * @param $group
+     * @return bool
+     */
+    public static function isRequired($group)
+    {
+        return in_array($group, self::config()->get('required_groups'));
     }
 }

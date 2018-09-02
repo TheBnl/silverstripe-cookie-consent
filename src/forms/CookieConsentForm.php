@@ -28,7 +28,6 @@ class CookieConsentForm extends Form
             $fields->add($field = $cookieGroup->createField());
             if (in_array($cookieGroup->ConfigName, $data)) {
                 $field->setValue(1);
-                //$field->
             }
         }
 
@@ -44,8 +43,8 @@ class CookieConsentForm extends Form
      */
     public function submitConsent($data, Form $form)
     {
-        CookieConsent::grant(CookieGroup::REQUIRED_DEFAULT);
-        foreach (Config::inst()->get(CookieConsent::class, 'cookies') as $group => $cookies) {
+        CookieConsent::grant(CookieConsent::config()->get('required_groups'));
+        foreach (CookieConsent::config()->get('cookies') as $group => $cookies) {
             if (isset($data[$group]) && $data[$group]) {
                 CookieConsent::grant($group);
             } elseif ($group !== CookieGroup::REQUIRED_DEFAULT) {
