@@ -126,7 +126,7 @@ class CookieGroup extends DataObject
                     if ($providerName === self::LOCAL_PROVIDER && Director::is_cli() && $url = Environment::getEnv('SS_BASE_URL')) {
                         $providerLabel = parse_url($url, PHP_URL_HOST);
                     } elseif ($providerName === self::LOCAL_PROVIDER) {
-                        $providerLabel = Director::hostName();
+                        $providerLabel = Director::host();
                     } else {
                         $providerLabel = str_replace('_', '.', $providerName);
                     }

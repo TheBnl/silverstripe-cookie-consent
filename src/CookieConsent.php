@@ -100,7 +100,7 @@ class CookieConsent
         if (isset($cookies[$group])) {
             foreach ($cookies[$group] as $host => $cookies) {
                 $host = ($host === CookieGroup::LOCAL_PROVIDER)
-                    ? Director::hostName()
+                    ? Director::host()
                     : str_replace('_', '.', $host);
                 foreach ($cookies as $cookie) {
                     Cookie::force_expiry($cookie, null, $host);
