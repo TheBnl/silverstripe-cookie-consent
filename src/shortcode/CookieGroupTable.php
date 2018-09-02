@@ -26,7 +26,7 @@ class CookieGroupTable
             }
             // Return the full string in the CMS so it will not delete itself,
             // but hide on the frond end if group not found
-            return Controller::curr() instanceof Page_Controller ? null : "[cookiegrouptable group=\"$group\"]";
+            return Controller::curr() instanceof ContentController ? null : "[cookiegrouptable group=\"$group\"]";
         });
     }
 }
