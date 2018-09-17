@@ -35,7 +35,7 @@ class CookieGroup extends DataObject
     private static $db = array(
         'ConfigName' => 'Varchar(255)',
         'Title' => 'Varchar(255)',
-        'Content' => 'HtmlText',
+        'Content' => 'HTMLText',
     );
 
     private static $indexes = array(

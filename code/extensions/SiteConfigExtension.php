@@ -18,7 +18,7 @@ class SiteConfigExtension extends DataExtension
 {
     private static $db = array(
         'CookieConsentTitle' => 'Varchar(255)',
-        'CookieConsentContent' => 'HtmlText'
+        'CookieConsentContent' => 'HTMLText'
     );
 
     private static $translate = array(
