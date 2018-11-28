@@ -1,7 +1,7 @@
 en:
   Broarm\CookieConsent\CookieConsent:
-    AcceptAllCookies: 'Accept all cookies'
     ManageCookies: 'Manage cookie settings'
+    AcceptAllCookies: 'Accept all cookies'
   Broarm\CookieConsent\CookieGroupTable:
     Title: 'Name cookie'
     Provider: 'Placed by'
