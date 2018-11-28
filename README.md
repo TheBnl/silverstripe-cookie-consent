@@ -76,7 +76,7 @@ If you want to include the scss or js in your own bundle you can do that by:
 // Import the CookieConsent utility 
 import CookieConsent from 'cookieconsent/javascript/src/cookieconsent';
 
-consent = new CookieConsent();
+const consent = new CookieConsent();
 
 // This tool let's you check for cookie consent in your js files before you apply any cookies
 if (consent.check('Marketing')) {
