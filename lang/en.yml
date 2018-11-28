@@ -1,14 +1,13 @@
 en:
-  CookieConsent:
-    CookieConsentTitle: 'This website uses cookies'
-    CookieConsentContent: '<p>We use Google’s cookies to analyze activities on our website and to improve our pages. With this information we also see how you use our website and which pages you find interesting. After your permission, we place cookies from social media partners for social media and advertising purposes. If desired, you can change your preferences under ‘Manage cookie settings’.</p>'
-    CookieConsentFormMessage: 'Your preferences have been saved'
-    CookiePolicyPageTitle: 'Cookie Policy'
-    CookiePolicyPageContent: '<p>$CookieConsentForm</p><p>[cookiegrouptable group="Necessary"]</p><p>[cookiegrouptable group="Analytics"]</p><p>[cookiegrouptable group="Marketing"]</p><p>[cookiegrouptable group="Preferences"]</p>'
-    PrivacyPolicyPageTitle: 'Privacy Policy'
-    PrivacyPolicyPageContent: '<p>You can fill this page with your privacy policy</p>'
-    TermsAndConditionsPageTitle: 'Terms and Conditions'
-    TermsAndConditionsPageContent: '<p>You can fill this page with your terms and conditions</p>'
+  Broarm\CookieConsent\CookieConsent:
+    AcceptAllCookies: 'Accept all cookies'
+    ManageCookies: 'Manage cookie settings'
+  Broarm\CookieConsent\CookieGroupTable:
+    Title: 'Name cookie'
+    Provider: 'Placed by'
+    Purpose: 'Purpose'
+    Expiry: 'Expiry'
+  Broarm\CookieConsent\CookieGroup:
     Necessary: 'Necessary'
     Necessary_Content: '<p>Necessary cookies make sure the site is able to run and includes your site preferences.</p>'
     Analytics: 'Analytics'
@@ -17,13 +16,22 @@ en:
     Marketing_Content: '<p>Marketing cookies are used to track the success of our advertising campaigns.</p>'
     Preferences: 'Preferences'
     Prefrences_Content: '<p>With preferential cookies we’re able to customize your user experience.</p>'
+  Broarm\CookieConsent\CookieConsentForm:
     Save: 'Save'
-    AcceptAllCookies: 'Accept all cookies'
-    ManageCookies: 'Manage cookie settings'
-    CookieGroupTableTitle: 'Name cookie'
-    CookieGroupTableProvider: 'Placed by'
-    CookieGroupTablePurpose: 'Purpose'
-    CookieGroupTableExpiry: 'Expiry'
+    FormMessage: 'Your preferences have been saved'
+  Broarm\CookieConsent\CookiePolicyPage:
+    Title: 'Cookie Policy'
+    Content: '<p>$CookieConsentForm</p><p>[cookiegrouptable group="Necessary"]</p><p>[cookiegrouptable group="Analytics"]</p><p>[cookiegrouptable group="Marketing"]</p><p>[cookiegrouptable group="Preferences"]</p>'
+  Broarm\CookieConsent\PrivacyPolicyPage:
+    Title: 'Privacy Policy'
+    Content: '<p>You can fill this page with your privacy policy</p>'
+  Broarm\CookieConsent\TermsAndConditionsPage:
+    Title: 'Terms and Conditions'
+    Content: '<p>You can fill this page with your terms and conditions</p>'
+  Broarm\CookieConsent\SiteConfigExtension:
+    Title: 'This website uses cookies'
+    Content: '<p>We use Google’s cookies to analyze activities on our website and to improve our pages. With this information we also see how you use our website and which pages you find interesting. After your permission, we place cookies from social media partners for social media and advertising purposes. If desired, you can change your preferences under ‘Manage cookie settings’.</p>'
+
   # general cookie content
   CookieConsent_local:
     PHPSESSID_Purpose: 'Session'
