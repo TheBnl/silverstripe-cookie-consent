@@ -3,6 +3,7 @@
 namespace Broarm\CookieConsent;
 
 use SilverStripe\Control\Controller;
+use SilverStripe\CMS\Controllers\ContentController;
 use SilverStripe\View\Parsers\ShortcodeParser;
 
 /**
