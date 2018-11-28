@@ -1,5 +1,8 @@
 <?php
 
+namespace Broarm\CookieConsent;
+
+use \Page;
 use Broarm\CookieConsent\CookieConsent;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\ORM\DB;
@@ -12,14 +15,16 @@ use SilverStripe\ORM\DB;
  */
 class TermsAndConditionsPage extends Page
 {
+    private static $table_name = 'TermsAndConditionsPage';
+
     private static $defaults = array(
         'ShowInMenus' => 0
     );
 
     public function populateDefaults()
     {
-        $this->Title = _t('CookieConsent.TermsAndConditionsPageTitle', 'Terms and Conditions');
-        $this->Content = _t('CookieConsent.TermsAndConditionsPageContent', '<p>Default terms and conditions</p>');
+        $this->Title = _t(__CLASS__ . '.Title', 'Terms and Conditions');
+        $this->Content = _t(__CLASS__ .'.Content', '<p>Default terms and conditions</p>');
         parent::populateDefaults();
     }
 

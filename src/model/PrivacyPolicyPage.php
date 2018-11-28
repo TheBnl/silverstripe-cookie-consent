@@ -1,5 +1,8 @@
 <?php
 
+namespace Broarm\CookieConsent;
+
+use \Page;
 use Broarm\CookieConsent\CookieConsent;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\ORM\DB;
@@ -12,14 +15,16 @@ use SilverStripe\ORM\DB;
  */
 class PrivacyPolicyPage extends Page
 {
+    private static $table_name = 'PrivacyPolicyPage';
+
     private static $defaults = array(
         'ShowInMenus' => 0
     );
 
     public function populateDefaults()
     {
-        $this->Title = _t('CookieConsent.PrivacyPolicyPageTitle', 'Privacy Policy');
-        $this->Content = _t('CookieConsent.PrivacyPolicyPageContent', '<p>Default privacy policy</p>');
+        $this->Title = _t(__CLASS__ . '.Title', 'Privacy Policy');
+        $this->Content = _t(__CLASS__ .'.Content', '<p>Default privacy policy</p>');
         parent::populateDefaults();
     }
 

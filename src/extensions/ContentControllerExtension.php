@@ -2,7 +2,6 @@
 
 namespace Broarm\CookieConsent;
 
-use CookiePolicyPage;
 use Exception;
 use SilverStripe\CMS\Controllers\ContentController;
 use SilverStripe\Core\Extension;
@@ -29,16 +28,8 @@ class ContentControllerExtension extends Extension
      */
     public function onAfterInit()
     {
-        $security = $this->owner instanceof Security;
-        $module = ModuleLoader::getModule('bramdeleeuw/cookieconsent');
-        if (!$security && Config::inst()->get(CookieConsent::class, 'include_javascript')) {
-            Requirements::javascript($module->getResource('javascript/dist/cookieconsent.js')->getRelativePath());
-            if (!CookieConsent::check(CookieConsent::NECESSARY)) {
-                Requirements::javascript($module->getResource('javascript/dist/cookieconsentpopup.js')->getRelativePath());
-            }
-        }
-
-        if (!$security && Config::inst()->get(CookieConsent::class, 'include_css')) {
+        if (!($this->owner instanceof Security) && Config::inst()->get(CookieConsent::class, 'include_css')) {
+            $module = ModuleLoader::getModule('bramdeleeuw/cookieconsent');
             Requirements::css($module->getResource('css/cookieconsent.css')->getRelativePath());
         }
     }
@@ -53,6 +44,19 @@ class ContentControllerExtension extends Extension
     public function CookieConsent($group = CookieConsent::NECESSARY)
     {
         return CookieConsent::check($group);
+    }
+
+    /**
+     * Check if we can promt for concent
+     * We're not on a Securty or Cooky policy page and have no concent set
+     *
+     * @return bool
+     */
+    public function PromptCookieConsent()
+    {
+        $securiy = $this->owner instanceof Security;
+        $cookiePolicy = $this->owner instanceof CookiePolicyPageController;
+        return !$securiy && !$cookiePolicy && !CookieConsent::check();
     }
 
     /**

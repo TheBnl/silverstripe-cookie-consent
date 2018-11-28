@@ -31,7 +31,7 @@ class CookieConsentForm extends Form
             }
         }
 
-        $actions = FieldList::create(FormAction::create('submitConsent', _t('CookieConsent.Save', 'Save')));
+        $actions = FieldList::create(FormAction::create('submitConsent', _t(__CLASS__ . '.Save', 'Save')));
         parent::__construct($controller, $name, $fields, $actions);
     }
 
@@ -52,7 +52,7 @@ class CookieConsentForm extends Form
             }
         }
 
-        $form->sessionMessage(_t('CookieConsentFormMessage', 'Your preferences have been saved'), 'good');
+        $form->sessionMessage(_t(__CLASS__ . 'FormMessage', 'Your preferences have been saved'), 'good');
         $this->getController()->redirectBack();
     }
 }

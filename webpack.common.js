@@ -3,15 +3,8 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: {
-      cookieconsent: './javascript/src/cookieconsent.js',
-      cookieconsentpopup: './javascript/src/cookieconsentpopup.js',
+      cookieconsent: './javascript/src/cookieconsent.js'
   },
-  plugins: [
-    new webpack.ProvidePlugin({
-      $: "jquery",
-      jQuery: "jquery"
-    })
-  ],
   module: {
     rules: [
       {

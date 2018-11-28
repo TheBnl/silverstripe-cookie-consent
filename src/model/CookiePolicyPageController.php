@@ -1,5 +1,8 @@
 <?php
 
+namespace Broarm\CookieConsent;
+
+use \PageController;
 use Broarm\CookieConsent\CookieConsentForm;
 use SilverStripe\Core\Manifest\ModuleLoader;
 use SilverStripe\ORM\FieldType\DBField;

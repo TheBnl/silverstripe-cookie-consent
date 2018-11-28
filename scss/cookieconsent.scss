@@ -1,19 +1,42 @@
-@import "../node_modules/foundation-sites/scss/foundation";
-@include foundation-reveal;
+.cookie-consent-background {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1005;
+    background-color: rgba(10,10,10,0.45);
+    overflow-y: scroll;
+}
 
-.cookie-consent {    
+.cookie-consent {
     max-width: calc(100% - 2rem);
     margin: 1rem auto;
     height: auto;
     min-height: auto;
+    z-index: 1006;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    padding: 1rem;
+    border: 1px solid #cacaca;
+    border-radius: 8px;
+    background-color: #fefefe;
+    position: relative;
+    top: 100px;
+    margin-right: auto;
+    margin-left: auto;
+    overflow-y: auto;
+    @media print, screen and (min-width: 600px) {
+        width: 600px;
+    }
+
     &__button {
         margin-bottom: .5rem;
         display: block;
         &:last-child {
             margin-bottom: 0;
         }
-
-        @include breakpoint(medium) {
+        @media print, screen and (min-width: 600px) {
             margin-bottom: 0;
             display: inline-block;
         }
@@ -28,40 +51,44 @@
 }
 
 .cookie-consent-field {
-    @include grid-row;
-    @include grid-row-nest;
     &__field,
+    &__description,
     &__label {
         box-sizing: border-box;
-        @include grid-col;
-        @include grid-col-size(6);
-        @include breakpoint(medium) {
-            @include grid-col-size(2);
+        float: left;
+        padding: 0 .5rem;
+        width: 100%;
+    }
+
+    &__field,
+    &__label {
+        width: 50%;
+        @media print, screen and (min-width: 600px) {
+            width: 16.66667%;
         }
     }
-    &__field {
-        @include breakpoint(medium) {
-            @include grid-col-pos(8);
+
+    &__description {
+        @media print, screen and (min-width: 600px) {
+            width: 66.66667%;
+            position: relative;
+            left: -16.66667%;
         }
+    }
+
+    &__message {
+        box-sizing: border-box;
+    }
+
+    &__field {
+        input[type="checkbox"],
         .switch {
             float: right;
         }
-    }
-    &__description {
-        box-sizing: border-box;
-        @include grid-col;
-        @include breakpoint(medium) {
-            @include grid-col-size(8);
-            @include grid-col-pos(-2);
+
+        @media print, screen and (min-width: 600px) {
+            position: relative;
+            left: 66.66667%;
         }
     }
-    &__message {
-        box-sizing: border-box;
-        @include grid-row;
-        @include grid-col;
-    }
-}
-
-.cookie-consent-form fieldset {
-    @include grid-row;
 }
