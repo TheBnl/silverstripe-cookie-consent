@@ -6,9 +6,9 @@ use Config;
 use Cookie;
 use Director;
 use Exception;
-use Object;
+use SS_Object;
 
-class CookieConsent extends Object
+class CookieConsent extends SS_Object
 {
     const COOKIE_NAME = 'CookieConsent';
     const NECESSARY = 'Necessary';
