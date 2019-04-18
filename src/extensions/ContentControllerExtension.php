@@ -11,6 +11,7 @@ use SilverStripe\ORM\DataObject;
 use SilverStripe\Security\Security;
 use SilverStripe\View\Requirements;
 use SilverStripe\Control\Controller;
+use SilverStripe\Control\Director;
 
 /**
  * Class ContentControllerExtension
@@ -74,8 +75,8 @@ class ContentControllerExtension extends Extension
         CookieConsent::grantAll();
 
         // Get the url the same as the redirect back method gets it
-        $url = $this->getBackURL()
-            ?: $this->getReturnReferer()
+        $url = $this->owner->getBackURL()
+            ?: $this->owner->getReturnReferer()
                 ?: Director::baseURL();
         $cachebust = uniqid();
         $url = Director::absoluteURL("$url?acceptCookies=$cachebust");
