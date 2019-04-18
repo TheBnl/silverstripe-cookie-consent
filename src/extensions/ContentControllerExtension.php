@@ -72,7 +72,14 @@ class ContentControllerExtension extends Extension
     public function acceptAllCookies()
     {
         CookieConsent::grantAll();
-        $this->owner->redirectBack();
+
+        // Get the url the same as the redirect back method gets it
+        $url = $this->getBackURL()
+            ?: $this->getReturnReferer()
+                ?: Director::baseURL();
+        $cachebust = uniqid();
+        $url = Director::absoluteURL("$url?acceptCookies=$cachebust");
+        $this->owner->redirect($url);
     }
 
     public function getAcceptAllCookiesLink()
