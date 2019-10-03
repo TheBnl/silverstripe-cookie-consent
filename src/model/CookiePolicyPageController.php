@@ -4,6 +4,7 @@ namespace Broarm\CookieConsent;
 
 use \PageController;
 use Broarm\CookieConsent\CookieConsentForm;
+use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Core\Manifest\ModuleLoader;
 use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\View\Requirements;
@@ -42,7 +43,7 @@ class CookiePolicyPageController extends PageController
      *
      * @return array
      */
-    public function index()
+    public function index(HTTPRequest $request)
     {
         if ($this->Content && $form = $this->Form()) {
             $hasLocation = stristr($this->Content, '$CookieConsentForm');
