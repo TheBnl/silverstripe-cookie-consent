@@ -57,7 +57,10 @@ class ContentControllerExtension extends Extension
     {
         $securiy = $this->owner instanceof Security;
         $cookiePolicy = $this->owner instanceof CookiePolicyPageController;
-        return !$securiy && !$cookiePolicy && !CookieConsent::check();
+        $hasConsent = CookieConsent::check();
+        $prompt = !$securiy && !$cookiePolicy && !$hasConsent;
+        $this->extend('updatePromptCookieConsent', $prompt);
+        return $prompt;
     }
 
     /**
