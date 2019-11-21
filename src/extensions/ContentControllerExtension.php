@@ -81,8 +81,14 @@ class ContentControllerExtension extends Extension
         $url = $this->owner->getBackURL()
             ?: $this->owner->getReturnReferer()
                 ?: Director::baseURL();
+
         $cachebust = uniqid();
-        $url = Director::absoluteURL("$url?acceptCookies=$cachebust");
+        if (parse_url($url, PHP_URL_QUERY)) {
+            $url = Director::absoluteURL("$url&acceptCookies=$cachebust");
+        } else {
+            $url = Director::absoluteURL("$url?acceptCookies=$cachebust");
+        }
+
         $this->owner->redirect($url);
     }
 
