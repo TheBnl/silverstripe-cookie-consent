@@ -22,14 +22,19 @@
     border-radius: 8px;
     background-color: #fefefe;
     position: relative;
-    top: 100px;
+    top: 0;
+    @include breakpoint(medium){
+        top: 100px;
+    }
     margin-right: auto;
     margin-left: auto;
     overflow-y: auto;
     @media print, screen and (min-width: 600px) {
         width: 600px;
     }
-
+    p{
+      line-height: 1.2em;
+    }
     &__button {
         margin-bottom: .5rem;
         display: block;
