@@ -51,6 +51,9 @@
 }
 
 .cookie-consent-field {
+    display: inline-block;
+    width: 100%;
+
     &__field,
     &__description,
     &__label {
