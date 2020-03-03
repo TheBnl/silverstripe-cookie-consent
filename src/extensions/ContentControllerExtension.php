@@ -55,8 +55,9 @@ class ContentControllerExtension extends Extension
      */
     public function PromptCookieConsent()
     {
-        $securiy = $this->owner instanceof Security;
-        $cookiePolicy = $this->owner instanceof CookiePolicyPageController;
+        $controller = Controller::curr();
+        $securiy = $controller ? $controller instanceof Security : false;
+        $cookiePolicy = $controller ? $controller instanceof CookiePolicyPageController : false;
         $hasConsent = CookieConsent::check();
         $prompt = !$securiy && !$cookiePolicy && !$hasConsent;
         $this->owner->extend('updatePromptCookieConsent', $prompt);
