@@ -52,7 +52,7 @@ class CookieConsentForm extends Form
             }
         }
 
-        $form->sessionMessage(_t(__CLASS__ . 'FormMessage', 'Your preferences have been saved'), 'good');
+        $form->sessionMessage(_t(__CLASS__ . '.FormMessage', 'Your preferences have been saved'), 'good');
         $this->getController()->redirectBack();
     }
 }
