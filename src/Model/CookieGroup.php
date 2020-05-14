@@ -1,7 +1,10 @@
 <?php
 
-namespace Broarm\CookieConsent;
+namespace Broarm\CookieConsent\Model;
 
+use Broarm\CookieConsent\CookieConsent;
+use Broarm\CookieConsent\Forms\CookieConsentCheckBoxField;
+use Broarm\CookieConsent\Gridfield\GridFieldConfigCookies;
 use Exception;
 use SilverStripe\Control\Director;
 use SilverStripe\Core\Environment;
@@ -48,7 +51,7 @@ class CookieGroup extends DataObject
     );
 
     private static $has_many = array(
-        'Cookies' => 'Broarm\\CookieConsent\\CookieDescription.Group',
+        'Cookies' => CookieDescription::class . '.Group'
     );
 
     private static $translate = array(

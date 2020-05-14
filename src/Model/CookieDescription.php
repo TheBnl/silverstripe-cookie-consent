@@ -1,7 +1,8 @@
 <?php
 
-namespace Broarm\CookieConsent;
+namespace Broarm\CookieConsent\Model;
 
+use Broarm\CookieConsent\CookieConsent;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\Forms\FieldList;
@@ -37,7 +38,7 @@ class CookieDescription extends DataObject
     );
 
     private static $has_one = array(
-        'Group' => 'Broarm\\CookieConsent\\CookieGroup'
+        'Group' => CookieGroup::class
     );
 
     private static $summary_fields = array(

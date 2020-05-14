@@ -1,7 +1,8 @@
 <?php
 
-namespace Broarm\CookieConsent;
+namespace Broarm\CookieConsent\Forms;
 
+use Broarm\CookieConsent\Model\CookieGroup;
 use SilverStripe\Forms\CheckboxField;
 
 /**

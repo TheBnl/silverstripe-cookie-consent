@@ -1,6 +1,6 @@
 <?php
 
-namespace Broarm\CookieConsent;
+namespace Broarm\CookieConsent\Model;
 
 use \Page;
 use Broarm\CookieConsent\CookieConsent;

@@ -17,8 +17,8 @@ SilverStripe\Control\Director:
 
 SilverStripe\CMS\Controllers\ContentController:
   extensions:
-    - Broarm\CookieConsent\ContentControllerExtension
+    - Broarm\CookieConsent\Extensions\ContentControllerExtension
 
 SilverStripe\SiteConfig\SiteConfig:
   extensions:
-    - Broarm\CookieConsent\SiteConfigExtension
+    - Broarm\CookieConsent\Extensions\SiteConfigExtension

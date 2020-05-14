@@ -2,6 +2,7 @@
 
 namespace Broarm\CookieConsent;
 
+use Broarm\CookieConsent\Model\CookieGroup;
 use Exception;
 use SilverStripe\Control\Director;
 use SilverStripe\Core\Config\Config;

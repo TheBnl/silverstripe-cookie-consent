@@ -1,7 +1,9 @@
 <?php
 
-namespace Broarm\CookieConsent;
+namespace Broarm\CookieConsent\Forms;
 
+use Broarm\CookieConsent\CookieConsent;
+use Broarm\CookieConsent\Model\CookieGroup;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Control\Controller;
 use SilverStripe\Forms\FieldList;

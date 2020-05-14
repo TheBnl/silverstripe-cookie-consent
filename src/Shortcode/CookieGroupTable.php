@@ -1,7 +1,9 @@
 <?php
 
-namespace Broarm\CookieConsent;
+namespace Broarm\CookieConsent\Shortcode;
 
+use Broarm\CookieConsent\CookieConsent;
+use Broarm\CookieConsent\Model\CookieGroup;
 use SilverStripe\Control\Controller;
 use SilverStripe\CMS\Controllers\ContentController;
 use SilverStripe\View\Parsers\ShortcodeParser;
@@ -23,7 +25,7 @@ class CookieGroupTable
             $defaultGroups = CookieConsent::config()->get('required_groups');
             $group = (isset($arguments['group']) && $arguments['group']) ? $arguments['group'] : $defaultGroups[0];
             if ($group = CookieGroup::get()->find('ConfigName', $group)) {
-                return $group->renderWith('CookieGroupTable')->getValue();
+                return $group->renderWith('Broarm\\CookieConsent\\Shortcode\\CookieGroupTable')->getValue();
             }
             // Return the full string in the CMS so it will not delete itself,
             // but hide on the frond end if group not found

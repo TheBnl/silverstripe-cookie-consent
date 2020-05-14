@@ -1,7 +1,8 @@
 <?php
 
-namespace Broarm\CookieConsent;
+namespace Broarm\CookieConsent\Extensions;
 
+use Broarm\CookieConsent\Model\CookieGroup;
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;

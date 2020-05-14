@@ -1,7 +1,10 @@
 <?php
 
-namespace Broarm\CookieConsent;
+namespace Broarm\CookieConsent\Extensions;
 
+use Broarm\CookieConsent\CookieConsent;
+use Broarm\CookieConsent\Control\CookiePolicyPageController;
+use Broarm\CookieConsent\Model\CookiePolicyPage;
 use Exception;
 use SilverStripe\CMS\Controllers\ContentController;
 use SilverStripe\Core\Extension;

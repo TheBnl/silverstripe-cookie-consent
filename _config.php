@@ -1,5 +1,5 @@
 <?php
 
-use Broarm\CookieConsent\CookieGroupTable;
+use Broarm\CookieConsent\Shortcode\CookieGroupTable;
 
 CookieGroupTable::register();

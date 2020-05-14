@@ -1,8 +1,10 @@
 <?php
 
-namespace Broarm\CookieConsent;
+namespace Broarm\CookieConsent\Model;
 
+use Broarm\CookieConsent\Control\CookiePolicyPageController;
 use \Page;
+use Broarm\CookieConsent\CookieConsent;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\DB;
@@ -18,6 +20,8 @@ use SilverStripe\Versioned\Versioned;
 class CookiePolicyPage extends Page
 {
     private static $table_name = 'CookiePolicyPage';
+
+    private static $controller_name = CookiePolicyPageController::class;
 
     private static $defaults = array(
         'ShowInMenus' => 0

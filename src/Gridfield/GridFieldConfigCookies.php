@@ -1,5 +1,5 @@
 <?php
-namespace Broarm\CookieConsent;
+namespace Broarm\CookieConsent\Gridfield;
 
 use Symbiote\GridFieldExtensions\GridFieldAddNewInlineButton;
 use SilverStripe\Forms\GridField\GridFieldConfig;

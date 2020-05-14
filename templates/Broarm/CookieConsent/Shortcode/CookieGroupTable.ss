@@ -4,10 +4,10 @@ $Content
     <table class="cookie-group-table">
         <thead class="cookie-group-table__header">
         <tr class="cookie-group-table__header-row">
-            <th class="cookie-group-table__header-col cookie-group-table__header-col--name"><%t Broarm\\CookieConsent\\CookieGroupTable.Title 'Name cookie' %></th>
-            <th class="cookie-group-table__header-col cookie-group-table__header-col--provider"><%t Broarm\\CookieConsent\\CookieGroupTable.Provider 'Placed by' %></th>
-            <th class="cookie-group-table__header-col cookie-group-table__header-col--purpose"><%t Broarm\\CookieConsent\\CookieGroupTable.Purpose 'Purpose' %></th>
-            <th class="cookie-group-table__header-col cookie-group-table__header-col--expiry"><%t Broarm\\CookieConsent\\CookieGroupTable.Expiry 'Expiry' %></th>
+            <th class="cookie-group-table__header-col cookie-group-table__header-col--name"><%t Broarm\\CookieConsent\\Shortcode\\CookieGroupTable.Title 'Name cookie' %></th>
+            <th class="cookie-group-table__header-col cookie-group-table__header-col--provider"><%t Broarm\\CookieConsent\\Shortcode\\CookieGroupTable.Provider 'Placed by' %></th>
+            <th class="cookie-group-table__header-col cookie-group-table__header-col--purpose"><%t Broarm\\CookieConsent\\Shortcode\\CookieGroupTable.Purpose 'Purpose' %></th>
+            <th class="cookie-group-table__header-col cookie-group-table__header-col--expiry"><%t Broarm\\CookieConsent\\Shortcode\\CookieGroupTable.Expiry 'Expiry' %></th>
         </tr>
         </thead>
         <tbody class="cookie-group-table__body">

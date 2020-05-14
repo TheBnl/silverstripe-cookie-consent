@@ -2,12 +2,12 @@ nl:
   Broarm\CookieConsent\CookieConsent:
     ManageCookies: 'Cookie-instellingen beheren'
     AcceptAllCookies: 'Alle cookies accepteren'
-  Broarm\CookieConsent\CookieGroupTable:
+  Broarm\CookieConsent\Shortcode\CookieGroupTable:
     Title: 'Naam cookie'
     Provider: 'Geplaatst door'
     Purpose: 'Doel'
     Expiry: 'Maximale bewaartermijn'
-  Broarm\CookieConsent\CookieGroup:
+  Broarm\CookieConsent\Model\CookieGroup:
     Necessary: 'Noodzakelijk'
     Necessary_Content: '<p>Noodzakelijke cookies worden gebruikt om de site optimaal te laten functioneren en bevatten jouw site voorkeuren.</p>'
     Analytics: 'Analytisch'
@@ -16,19 +16,19 @@ nl:
     Marketing_Content: '<p>Met marketing cookies volgen wij het succes van onze online campagnes.</p>'
     Preferences: 'Voorkeuren'
     Prefrences_Content: '<p>Met voorkeur cookies zijn wij in staat om uw gebruikerservaring te passen.</p>'
-  Broarm\CookieConsent\CookieConsentForm:
+  Broarm\CookieConsent\Forms\CookieConsentForm:
     Save: 'Opslaan'
     FormMessage: 'Uw voorkeuren zijn opgeslagen'
-  Broarm\CookieConsent\CookiePolicyPage:
+  Broarm\CookieConsent\Model\CookiePolicyPage:
     Title: 'Cookie Policy'
     Content: '<p>$CookieConsentForm</p><p>[cookiegrouptable group="Necessary"]</p><p>[cookiegrouptable group="Analytics"]</p><p>[cookiegrouptable group="Marketing"]</p><p>[cookiegrouptable group="Preferences"]</p>'
-  Broarm\CookieConsent\PrivacyPolicyPage:
+  Broarm\CookieConsent\Model\PrivacyPolicyPage:
     Title: 'Privacy Policy'
     Content: '<p>U kunt deze pagina vullen met uw privacy policy</p>'
-  Broarm\CookieConsent\TermsAndConditionsPage:
+  Broarm\CookieConsent\Model\TermsAndConditionsPage:
     Title: 'Algemene voorwaarden'
     Content: '<p>U kunt deze pagina vullen met uw algemene voorwaarden</p>'
-  Broarm\CookieConsent\SiteConfigExtension:
+  Broarm\CookieConsent\Extensions\SiteConfigExtension:
     Title: 'Deze website maakt gebruik van cookies'
     Content: '<p>We zetten cookies van Google in om activiteiten op onze website te analyseren en onze pagina’s te verbeteren. Hiermee zien we ook hoe je onze website gebruikt en welke pagina’s je interessant vindt. Na je toestemming plaatsen we cookies van social media partners voor socialmedia- en advertentiedoeleinden. Indien gewenst kun je jouw voorkeuren wijzigen onder ‘Cookie-instellingen beheren’.</p>'
 
