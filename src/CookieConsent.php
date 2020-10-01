@@ -131,7 +131,8 @@ class CookieConsent
     public static function setConsent($consent)
     {
         $consent = array_filter(array_unique(array_merge($consent, self::config()->get('required_groups'))));
-        Cookie::set(CookieConsent::COOKIE_NAME, implode(',', $consent), 730, null, null, false, false);
+        $domain = self::config()->get('domain') ?: null;
+        Cookie::set(CookieConsent::COOKIE_NAME, implode(',', $consent), 730, null, $domain, false, false);
     }
 
     /**
