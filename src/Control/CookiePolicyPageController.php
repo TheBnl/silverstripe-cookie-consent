@@ -2,9 +2,11 @@
 
 namespace Broarm\CookieConsent\Control;
 
+use Broarm\CookieConsent\CookieConsent;
 use \PageController;
 use Broarm\CookieConsent\Forms\CookieConsentForm;
 use SilverStripe\Control\HTTPRequest;
+use SilverStripe\Core\Config\Config;
 use SilverStripe\Core\Manifest\ModuleLoader;
 use SilverStripe\ORM\FieldType\DBField;
 use SilverStripe\View\Requirements;
@@ -29,7 +31,9 @@ class CookiePolicyPageController extends PageController
         parent::init();
         $module = ModuleLoader::getModule('bramdeleeuw/cookieconsent');
         Requirements::block($module->getResource('javascript/dist/cookieconsentpopup.js')->getRelativePath());
-        Requirements::css($module->getResource('css/cookieconsent.css')->getRelativePath());
+        if (Config::inst()->get(CookieConsent::class, 'include_css')) {
+            Requirements::css($module->getResource('css/cookieconsent.css')->getRelativePath());
+        }
     }
 
     /**
