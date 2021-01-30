@@ -27,11 +27,9 @@ class CookiePolicyPageController extends PageController
     public function init()
     {
         parent::init();
-        Requirements::block(
-            ModuleLoader::getModule('bramdeleeuw/cookieconsent')
-                ->getResource('javascript/dist/cookieconsentpopup.js')
-                ->getRelativePath()
-        );
+        $module = ModuleLoader::getModule('bramdeleeuw/cookieconsent');
+        Requirements::block($module->getResource('javascript/dist/cookieconsentpopup.js')->getRelativePath());
+        Requirements::css($module->getResource('css/cookieconsent.css')->getRelativePath());
     }
 
     /**
