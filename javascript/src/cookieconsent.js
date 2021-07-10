@@ -46,7 +46,9 @@ export default class CookieConsent {
             cookiePopup.remove();
             return;
         }
-
+        
+        // show popup
+        cookiePopup.classList.remove('cookie-consent-background--hidden');
         acceptAllLink.addEventListener('click', (e) => {
             e.preventDefault();
 
