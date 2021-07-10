@@ -32,7 +32,7 @@ class ContentControllerExtension extends Extension
      */
     public function onAfterInit()
     {
-        if (!($this->owner instanceof Security) && Config::inst()->get(CookieConsent::class, 'include_css') && !CookieConsent::check()) {
+        if ($this->CookieConsentIsInXHRMode() || !($this->owner instanceof Security) && Config::inst()->get(CookieConsent::class, 'include_css') && !CookieConsent::check()) {
             $module = ModuleLoader::getModule('bramdeleeuw/cookieconsent');
             Requirements::css($module->getResource('css/cookieconsent.css')->getRelativePath());
         }
