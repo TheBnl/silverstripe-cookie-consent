@@ -70,11 +70,27 @@ Broarm\CookieConsent\CookieConsent:
   create_default_pages: true
 ```
 
+### Enable XHR mode
+When you use static publishing, you'll want to enable XHR mode. XHR mode accepts the cookies trough an xhr request and shows/hides the consent popup with the help of some javascript.
+
+In your yml config set `xhr_mode` to `true`
+```yaml
+Broarm\CookieConsent\CookieConsent:
+  xhr_mode: true
+```
+
+In your javascript, you can make use of the utility class. This handles the xhr request and visibility of the popup:
+```js
+import CookieConsent from '../vendor/bramdeleeuw/cookieconsent/javascript/src/cookieconsent';
+const consent = new CookieConsent();
+consent.enableXHRMode();
+```
+
 ### Include assets in your bundle
 If you want to include the scss or js in your own bundle you can do that by:
 ```js
 // Import the CookieConsent utility 
-import CookieConsent from 'cookieconsent/javascript/src/cookieconsent';
+import CookieConsent from '../vendor/bramdeleeuw/cookieconsent/javascript/src/cookieconsent';
 
 const consent = new CookieConsent();
 
@@ -85,17 +101,9 @@ if (consent.check('Marketing')) {
 
 // If you use Google Tag Manager this tool can also push the consent into the dataLayer object
 consent.pushToDataLayer();
-
-// Import the CookieConsentPopup
-import {initCookieConsentPopup} from 'cookieconsent/javascript/src/cookieconsentpopup';
-
-// Run this where you initialize your scripts on document ready
-$(document).ready(function () {
-    initCookieConsentPopup();
-});
 ```
 
-For the scss you can just import the scss file 
+For the scss you can just import the scss file
 ```scss
 @import "cookieconsent/scss/cookieconsent";
 ```
