@@ -40,6 +40,8 @@ class CookieConsent
     private static $include_css = true;
 
     private static $create_default_pages = true;
+    
+    private static $xhr_mode = false;
 
     /**
      * Check if there is consent for the given cookie

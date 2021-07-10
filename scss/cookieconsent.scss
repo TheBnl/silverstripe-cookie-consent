@@ -7,6 +7,9 @@
     z-index: 1005;
     background-color: rgba(10,10,10,0.45);
     overflow-y: scroll;
+    &--hidden {
+        display: none;
+    }
 }
 
 .cookie-consent {

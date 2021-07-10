@@ -51,6 +51,14 @@ class ContentControllerExtension extends Extension
     }
 
     /**
+     * Check if cookie consent is in XHR mode
+     */
+    public function CookieConsentIsInXHRMode()
+    {
+        return CookieConsent::config()->get('xhr_mode');
+    }
+    
+    /**
      * Check if we can promt for concent
      * We're not on a Securty or Cooky policy page and have no concent set
      *
