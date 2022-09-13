@@ -42,22 +42,24 @@ export default class CookieConsent {
         const acceptAllLink = document.getElementById('accept-all-cookies');
         const cookiePopup = document.getElementById('cookie-consent-popup');
 
-        if (this.isSet()) {
-            cookiePopup.remove();
-            return;
+        if( cookiePopup ) {
+            if (this.isSet()) {
+                cookiePopup.remove();
+                return;
+            }
+
+            // show popup
+            cookiePopup.classList.remove('cookie-consent-background--hidden');
+            acceptAllLink.addEventListener('click', (e) => {
+                e.preventDefault();
+
+                const xhr = new XMLHttpRequest();
+                xhr.open('GET', acceptAllLink.href);
+                xhr.send();
+
+                cookiePopup.remove();
+                console.log('accept all');
+            })
         }
-        
-        // show popup
-        cookiePopup.classList.remove('cookie-consent-background--hidden');
-        acceptAllLink.addEventListener('click', (e) => {
-            e.preventDefault();
-
-            const xhr = new XMLHttpRequest();
-            xhr.open('GET', acceptAllLink.href);
-            xhr.send();
-
-            cookiePopup.remove();
-            console.log('accept all');
-        })
     }
 }
