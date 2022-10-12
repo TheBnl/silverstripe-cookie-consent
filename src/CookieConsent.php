@@ -23,11 +23,11 @@ class CookieConsent
     use Injectable;
     use Configurable;
 
-    const COOKIE_NAME = 'CookieConsent';
-    const NECESSARY = 'Necessary';
-    const ANALYTICS = 'Analytics';
-    const MARKETING = 'Marketing';
-    const PREFERENCES = 'Preferences';
+    public const COOKIE_NAME = 'CookieConsent';
+    public const NECESSARY = 'Necessary';
+    public const ANALYTICS = 'Analytics';
+    public const MARKETING = 'Marketing';
+    public const PREFERENCES = 'Preferences';
 
     private static $required_groups = [
         self::NECESSARY
@@ -40,7 +40,7 @@ class CookieConsent
     private static $include_css = true;
 
     private static $create_default_pages = true;
-    
+
     private static $xhr_mode = false;
 
     /**
@@ -122,7 +122,7 @@ class CookieConsent
      */
     public static function getConsent()
     {
-        return explode(',', Cookie::get(CookieConsent::COOKIE_NAME));
+        return explode(',', Cookie::get(CookieConsent::COOKIE_NAME) ?? '');
     }
 
     /**
