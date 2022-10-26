@@ -3,7 +3,7 @@
 namespace Broarm\CookieConsent\Control;
 
 use Broarm\CookieConsent\CookieConsent;
-use \PageController;
+use PageController;
 use Broarm\CookieConsent\Forms\CookieConsentForm;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Core\Config\Config;
@@ -56,7 +56,7 @@ class CookiePolicyPageController extends PageController
                 // installed, the form fails to render.  The reason is that 1) The HTML for the form is injected into
                 // the output as HTMLText object  2) And HTMLText that has 4 or more spaces as a prefix is treated as
                 // being code content.  This broke the form rendering
-                $content = implode("\n", array_map('trim', explode("\n", $content)));
+                $content = implode("\n", array_map('trim', explode("\n", $content) ?? ''));
 
                 return array(
                     'Content' => DBField::create_field('HTMLText', $content),
